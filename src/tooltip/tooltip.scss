@@ -1,19 +1,26 @@
-@import "../variables";
-@import "../mixins/mixins";
+// variables
+$font-color: #FFFFFF;
+$background-color: #4E5052;
+$border-color: #0C0C0D;
 
+// mixins
+@mixin border-radius($top: 50px, $right: 50px, $bottom: 50px, $left: 50px) {
+    -webkit-border-radius: $top $right $bottom $left;
+    -moz-border-radius: $top $right $bottom $left;
+    -ms-border-radius: $top $right $bottom $left;
+    border-radius: $top $right $bottom $left;
+}
 
 .skyflow-tooltip-container {
 
-    color: $color-white;
-    background-color: #4E5052;
-    border: 1px solid #0C0C0D;
+    color: $font-color;
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    padding: 5px 8px;
+    text-align: center;
     @include border-radius(3px, 3px, 3px, 3px);
 
-    padding: 5px 8px;
-    //width: 100px;
-
     .skyflow-tooltip-arrow {
-
         width: 10px;
         height: 10px;
         position: absolute;
@@ -21,7 +28,6 @@
         background-color: #4E5052;
         border: 1px solid #0C0C0D;
         @include border-radius(0, 2px, 0, 0);
-
     }
 
     &[data-skyflow-placement="bottom"] {

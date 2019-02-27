@@ -1,7 +1,5 @@
-import Helper from './Helper.js';
-
 /**
- * Skyflow Tooltip - Powerful class for describing and interacting with your elements
+ * Powerful widget for describing and interacting with your elements.
  *
  * @class Tooltip
  * @constructor
@@ -10,18 +8,16 @@ import Helper from './Helper.js';
  * @requires Helper
  * @example
  *      let tooltip = new Tooltip('.my-trigger-selector', 'Hello world !');
- *      tooltip.placement('left').position('-6', null).clickOut().trigger('click');
+ *      tooltip.placement('left').position('-6', null).trigger('click');
  */
 export default class Tooltip {
-
-    // Todo : Doc for attributes.
 
     /**
      * Constructor.
      *
      * @method constructor
-     * @param {String|Element} target Tooltip target. Must be an element from the DOM.
-     * @param {String|Element} content Sets Tooltip content.
+     * @param {String|HTMLElement} target Tooltip target. Must be an element from the DOM.
+     * @param {String|HTMLElement} content Sets Tooltip content.
      * @since 1.0.0
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
@@ -37,15 +33,28 @@ export default class Tooltip {
             return this;
         }
 
-        // Target configuration
+        /**
+         * Target element.
+         *
+         * @property target
+         * @type {HTMLElement}
+         * @since 1.0.0
+         */
         this.target = target;
         let rect = this.target.getBoundingClientRect();
         this.targetHeight = rect.height;
         this.targetWidth = rect.width;
-        this.targetX = rect.x + window.scrollX;
-        this.targetY = rect.y + window.scrollY;
+        this.targetX = rect.x;
+        this.targetY = rect.y;
 
-        //  container configuration
+        /**
+         * Tooltip container element.
+         *
+         * @property container
+         * @type {HTMLElement}
+         * @since 1.0.0
+         * @default HTMLDivElement
+         */
         this.container = document.createElement('div');
         this.container.style.visibility = 'hidden';
         this.container.style.display = 'none';
@@ -54,38 +63,137 @@ export default class Tooltip {
         this.container.dataset.skyflowPlacement = 'bottom';
         this.container.classList.add('skyflow-tooltip-container');
         document.body.appendChild(this.container);
-        // Helper.insertAfter(this.container, target);
 
-        // Tooltip arrow
+        /**
+         * Tooltip arrow element.
+         *
+         * @property tooltipArrow
+         * @type {HTMLElement}
+         * @since 1.0.0
+         * @default HTMLSpanElement
+         */
         this.tooltipArrow = document.createElement('span');
         this.tooltipArrow.classList.add('skyflow-tooltip-arrow');
         this.container.appendChild(this.tooltipArrow);
 
-        // Tooltip content
+        /**
+         * Tooltip content element.
+         *
+         * @property content
+         * @type {HTMLElement}
+         * @since 1.0.0
+         * @default HTMLDivElement
+         */
         this.content = document.createElement('div');
         this.content.classList.add('skyflow-tooltip-content');
         this.container.appendChild(this.content);
 
-        // Current x position
+        /**
+         * Tooltip horizontal position value.
+         *
+         * @property x
+         * @type {Number}
+         * @since 1.0.0
+         */
         this.x = null;
+
+        /**
+         * Tooltip horizontal incrementation value.
+         *
+         * @property incrementX
+         * @type {String}
+         * @since 1.0.0
+         */
         this.incrementX = null;
 
-        // Current y position
+        /**
+         * Tooltip vertical position value.
+         *
+         * @property x
+         * @type {Number}
+         * @since 1.0.0
+         */
         this.y = null;
+
+        /**
+         * Tooltip horizontal incrementation value.
+         *
+         * @property incrementX
+         * @type {String}
+         * @since 1.0.0
+         */
         this.incrementY = null;
 
+        /**
+         * Tooltip configuration array.
+         *
+         * @property config
+         * @type {Object}
+         * @since 1.0.0
+         */
         this.config = {
+            /**
+             * Tooltip placement.
+             *
+             * @property config.placement
+             * @type {String}
+             * @since 1.0.0
+             * @default 'bottom'
+             */
             placement: 'bottom',
+            /**
+             * Tooltip trigger type.
+             *
+             * @property config.trigger
+             * @type {String}
+             * @since 1.0.0
+             * @default 'hover'
+             */
             trigger: 'hover',
+            /**
+             * Tooltip events array.
+             *
+             * @property config.events
+             * @type {Object}
+             * @since 1.0.0
+             */
             events: {
+                /**
+                 * Tooltip show event.
+                 *
+                 * @property config.events.show
+                 * @type {Function}
+                 * @since 1.0.0
+                 * @default null
+                 */
                 show: null,
+                /**
+                 * Tooltip hide event.
+                 *
+                 * @property config.events.hide
+                 * @type {Function}
+                 * @since 1.0.0
+                 * @default null
+                 */
                 hide: null,
             },
         };
 
-        // Stores placement callbacks
+        /**
+         * Tooltip placement callback functions.
+         *
+         * @property placementsHandler
+         * @type {Object}
+         * @since 1.0.0
+         */
         this.placementsHandler = {
-
+            /**
+             * Tooltip bottom placement callback function.
+             *
+             * @property placementsHandler.bottom
+             * @type {Function}
+             * @since 1.0.0
+             */
             bottom: () => {
                 let x = this.targetX;
                 let w = this.targetWidth;
@@ -104,6 +212,13 @@ export default class Tooltip {
 
                 return {x, y: this.targetY + this.targetHeight};
             },
+            /**
+             * Tooltip top placement callback function.
+             *
+             * @property placementsHandler.top
+             * @type {Function}
+             * @since 1.0.0
+             */
             top: () => {
                 let x = this.targetX;
                 let w = this.targetWidth;
@@ -123,6 +238,13 @@ export default class Tooltip {
 
                 return {x, y: this.targetY - containerHeight};
             },
+            /**
+             * Tooltip right placement callback function.
+             *
+             * @property placementsHandler.right
+             * @type {Function}
+             * @since 1.0.0
+             */
             right: () => {
                 let y = this.targetY;
                 let h = this.targetHeight;
@@ -141,6 +263,13 @@ export default class Tooltip {
 
                 return {x: this.targetX + this.targetWidth, y};
             },
+            /**
+             * Tooltip left placement callback function.
+             *
+             * @property placementsHandler.left
+             * @type {Function}
+             * @since 1.0.0
+             */
             left: () => {
                 let y = this.targetY;
                 let h = this.targetHeight;
@@ -163,7 +292,14 @@ export default class Tooltip {
 
         };
 
-        // Callback for trigger event
+        /**
+         * Trigger event callback function.
+         *
+         * @method triggerEventCallback
+         * @param {Event} e Current Event object
+         * @since 1.0.0
+         * @returns {Tooltip} Returns an instance of Tooltip object.
+         */
         this.triggerEventCallback = (e) => {
 
             if (e.type === 'mouseover' || e.type === 'mouseout') {
@@ -187,40 +323,79 @@ export default class Tooltip {
 
         };
 
-        // Stores trigger callbacks
+        /**
+         * Tooltip trigger callback functions.
+         *
+         * @property triggersHandler
+         * @type {Object}
+         * @since 1.0.0
+         */
         this.triggersHandler = {
-
+            /**
+             * Tooltip hover trigger callback function.
+             *
+             * @property triggersHandler.hover
+             * @type {Function}
+             * @since 1.0.0
+             */
             hover: () => {
                 Helper.addEvent(this.target, 'mouseover', this.triggerEventCallback);
                 Helper.addEvent(this.target, 'mouseout', this.triggerEventCallback);
             },
+            /**
+             * Tooltip click trigger callback function.
+             *
+             * @property triggersHandler.click
+             * @type {Function}
+             * @since 1.0.0
+             */
             click: () => {
                 Helper.addEvent(this.target, 'click', this.triggerEventCallback);
             },
-            manual: () => {
-
-            },
-
+            /**
+             * Tooltip manual trigger callback function.
+             *
+             * @property triggersHandler.manual
+             * @type {Function}
+             * @since 1.0.0
+             */
+            manual: () => {},
         };
 
-        // Callback for click out event
+        /**
+         * Click out event callback function.
+         *
+         * @method clickOutEventCallback
+         * @param {Event} e Current Event object
+         * @since 1.0.0
+         * @returns {Tooltip} Returns an instance of Tooltip object.
+         */
         this.clickOutEventCallback = (e) => {
 
             if (Helper.isChildOf(e.target, this.container) || (e.target === this.container)) {
-                return false;
+                return this;
             }
 
             if (Helper.isChildOf(e.target, this.target) || (e.target === this.target)) {
-                return false;
+                return this;
             }
 
             if (!this.isShown()) {
-                return false;
+                return this;
             }
 
-            this.hide();
-
+            return this.hide();
         };
+
+        /**
+         * Click out state.
+         *
+         * @property isClickOut
+         * @type {Boolean}
+         * @since 1.0.0
+         * @default false
+         */
+        this.isClickOut = false;
 
         if (Helper.isString(content)) {
             this.html(content);
@@ -231,6 +406,13 @@ export default class Tooltip {
         }
 
         this.trigger(this.config.trigger);
+
+        Helper.addEvent(window, 'scroll', ()=>{
+            if(this.isShown()){
+                this.position(this.incrementX, this.incrementY);
+            }
+        });
+
     }
 
     /**
@@ -243,20 +425,58 @@ export default class Tooltip {
     show() {
 
         this.container.style.display = 'block';
-
         this.position(this.incrementX, this.incrementY);
+        this.container.classList.add('skyflow-tooltip-is-shown');
+        this.container.style.visibility = 'visible';
+        // Trigger event
+        if (this.config.events.show) {
+            this.config.events.show.apply(null, [this]);
+        }
+
+        return this;
+    }
+
+    /**
+     * Sets Tooltip position.
+     *
+     * @method position
+     * @param {String} incrementX Horizontal position incrementation.
+     * @param {String} incrementY Vertical position incrementation.
+     * @since 1.0.0
+     * @returns {Tooltip} Returns an instance of Tooltip object.
+     */
+    position(incrementX = '+0', incrementY = '+0') {
+
+        this.incrementX = incrementX;
+        this.incrementY = incrementY;
+
+        let rect = this.target.getBoundingClientRect();
+        this.targetX = rect.x;
+        this.targetY = rect.y;
+
+        let {x, y} = this.placementsHandler[this.config.placement]();
+
+        if (Helper.isNumber(incrementX)) {
+            x = incrementX;
+        }
+
+        if (Helper.isNumber(incrementY)) {
+            y = incrementY;
+        }
+
+        if (Helper.isString(incrementX)) {
+            x = eval(x + incrementX);
+        }
+
+        if (Helper.isString(incrementY)) {
+            y = eval(y + incrementY);
+        }
+
+        this.x = x;
+        this.y = y;
 
         this.container.style.left = this.x + 'px';
         this.container.style.top = this.y + 'px';
-
-        this.container.classList.add('skyflow-tooltip-is-shown');
-
-        this.container.style.visibility = 'visible';
-
-        // Trigger event
-        if (this.config.events.show) {
-            this.config.events.show.apply(this);
-        }
 
         return this;
     }
@@ -300,6 +520,7 @@ export default class Tooltip {
 
         this.config.trigger = trigger;
         this.triggersHandler[trigger]();
+        this.clickOut(this.isClickOut);
 
         return this;
     }
@@ -368,44 +589,6 @@ export default class Tooltip {
     }
 
     /**
-     * Sets Tooltip position. Needed placement must be set.
-     *
-     * @method position
-     * @param {String} incrementX Horizontal position.
-     * @param {String} incrementY Vertical position.
-     * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
-     */
-    position(incrementX = '+0', incrementY = '+0') {
-
-        this.incrementX = incrementX;
-        this.incrementY = incrementY;
-
-        let {x, y} = this.placementsHandler[this.config.placement]();
-
-        if (Helper.isNumber(incrementX)) {
-            x = incrementX;
-        }
-
-        if (Helper.isNumber(incrementY)) {
-            y = incrementY;
-        }
-
-        if (Helper.isString(incrementX)) {
-            x = eval(x + incrementX);
-        }
-
-        if (Helper.isString(incrementY)) {
-            y = eval(y + incrementY);
-        }
-
-        this.x = x < 0 ? 0 : x;
-        this.y = y < 0 ? 0 : y;
-
-        return this;
-    }
-
-    /**
      * Checks if Tooltip is shown.
      *
      * @method isShown
@@ -463,14 +646,13 @@ export default class Tooltip {
      * @returns {Tooltip} Returns the current Tooltip object.
      */
     clickOut(close = true) {
-
+        
+        this.isClickOut = close;
         if (this.config.trigger === 'hover') {
             return this;
         }
-
         Helper.removeEvent(document, 'mouseup', this.clickOutEventCallback);
-
-        if (close === true) {
+        if (this.isClickOut === true) {
             Helper.addEvent(document, 'mouseup', this.clickOutEventCallback);
         }
 
