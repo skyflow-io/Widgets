@@ -276,9 +276,41 @@ export default class Notification {
                  * @default null
                  */
                 hide: null,
+                /**
+                 * Notification success event.
+                 *
+                 * @property config.events.success
+                 * @type {Function}
+                 * @since 1.0.0
+                 * @default null
+                 */
                 success: null,
+                /**
+                 * Notification warning event.
+                 *
+                 * @property config.events.warning
+                 * @type {Function}
+                 * @since 1.0.0
+                 * @default null
+                 */
                 warning: null,
+                /**
+                 * Notification info event.
+                 *
+                 * @property config.events.info
+                 * @type {Function}
+                 * @since 1.0.0
+                 * @default null
+                 */
                 info: null,
+                /**
+                 * Notification error event.
+                 *
+                 * @property config.events.error
+                 * @type {Function}
+                 * @since 1.0.0
+                 * @default null
+                 */
                 error: null,
             },
         };

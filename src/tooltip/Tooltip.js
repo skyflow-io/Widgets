@@ -16,8 +16,8 @@ export default class Tooltip {
      * Constructor.
      *
      * @method constructor
-     * @param {String|HTMLElement} target Tooltip target. Must be an element from the DOM.
-     * @param {String|HTMLElement} content Sets Tooltip content.
+     * @param {HTMLElement|String} target Tooltip target. Must be an element from the DOM.
+     * @param {HTMLElement|String} content Sets Tooltip content.
      * @since 1.0.0
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
@@ -26,10 +26,8 @@ export default class Tooltip {
         if (Helper.isString(target)) {
             target = document.querySelector(target);
         }
-
         if (!Helper.isElement(target)) {
             console.error(`SkyflowTooltipError: Can not find target '${target}' element from the DOM.`);
-
             return this;
         }
 
