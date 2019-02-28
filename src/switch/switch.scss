@@ -1,0 +1,71 @@
+// Variables
+$color-primary: #30287E;
+$color-secondary: #FFFFFF;
+$transition-time: 0.3s;
+
+// Mixins
+@mixin transition($property, $time: $transition-time){
+  -webkit-transition: $property $time;
+  -moz-transition: $property $time;
+  -o-transition: $property $time;
+  transition: $property $time;
+}
+
+@mixin border-radius($value: 50%) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+
+.skyflow-switch-container {
+
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  input[type='checkbox'] + span.skyflow-switch-mark {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    //position: absolute;
+    border: 2px solid $color-primary;
+    background-color: $color-secondary;
+    cursor: pointer;
+    @include border-radius(30px);
+    @include transition(all);
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background-color: $color-primary;
+      //background-color: $color-inactive;
+      @include border-radius();
+      @include transition(all);
+    }
+
+  }
+
+  input[type='checkbox']:checked + span.skyflow-switch-mark {
+    //border: 2px solid $color-primary;
+    background-color: $color-primary;
+    &:before {
+      background-color: $color-secondary;
+      left: 27px;
+    }
+  }
+
+}
