@@ -1,0 +1,99 @@
+// Variables
+$color-primary: #30287E;
+$color-secondary: #FFFFFF;
+$color-success: #007E33;
+$color-warning: #FF8800;
+$color-info: #0099CC;
+$color-error: #CC0000;
+
+.skyflow-notification-container {
+  position: fixed;
+  width: 100%;
+  max-width: 450px;
+  min-height: 150px;
+  right: -450px;
+  bottom: 0;
+  z-index: 1001;
+  background-color: $color-secondary;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  -o-transition: right 0.3s;
+  transition: right 0.3s;
+  box-shadow: -1px -1px 5px 0px rgba(0, 0, 0, 0.14), 1px 3px 5px 1px rgba(0, 0, 0, 0.12), 1px 2px 1px 1px rgba(0, 0, 0, 0.2);
+
+  &.skyflow-notification-is-shown {
+    right: 0;
+  }
+
+  .skyflow-notification-close-button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    &::after, &::before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 10px;
+      background-color: $color-secondary;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    &::after {
+      transform: rotate(45deg);
+    }
+    &::before {
+      transform: rotate(-45deg);
+    }
+    &:hover {
+      background-color: $color-secondary;
+      &::after, &::before {
+        background-color: $color-primary;
+      }
+    }
+  }
+  .skyflow-notification-header {
+    color: $color-secondary;
+    background-color: $color-primary;
+    padding: 15px 45px 15px 15px;
+  }
+  .skyflow-notification-body {
+    padding: 15px;
+  }
+
+  &.skyflow-notification-success-state {
+    .skyflow-notification-header {
+      color: $color-secondary;
+      background-color: $color-success;
+    }
+  }
+
+  &.skyflow-notification-warning-state {
+    .skyflow-notification-header {
+      color: $color-secondary;
+      background-color: $color-warning;
+    }
+  }
+
+  &.skyflow-notification-info-state {
+    .skyflow-notification-header {
+      color: $color-secondary;
+      background-color: $color-info;
+    }
+  }
+
+  &.skyflow-notification-error-state {
+    .skyflow-notification-header {
+      color: $color-secondary;
+      background-color: $color-error;
+    }
+  }
+
+}
