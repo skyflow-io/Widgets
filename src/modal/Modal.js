@@ -185,8 +185,7 @@ export default class Modal {
          * @default HTMLDivElement
          */
         this.container = document.createElement('div');
-        this.container.classList.add('skyflow-modal-overlay');
-        this.container.classList.add('skyflow-modal-container');
+        this.addClass('skyflow-modal-container');
         document.body.appendChild(this.container);
 
         /**
@@ -365,7 +364,7 @@ export default class Modal {
      * @returns {Modal} Returns the current Modal object.
      */
     show(){
-        this.container.classList.add('skyflow-modal-is-shown');
+        this.addClass('skyflow-modal-is-shown');
         this.container.style.display = 'block';
         let h = 0;
         if(this.Header.isActive()){
@@ -393,7 +392,7 @@ export default class Modal {
      * @returns {Modal} Returns the current Modal object.
      */
     hide(){
-        this.container.classList.remove('skyflow-modal-is-shown');
+        this.removeClass('skyflow-modal-is-shown');
         this.container.style.display = 'none';
         this.container.style.visibility = 'hidden';
         if (this.config.events.hide) {
@@ -440,7 +439,7 @@ export default class Modal {
      * Sets events for Modal object.
      *
      * @method on
-     * @param {String} event Event name.
+     * @param {String} event Event name. See config.events to know list of events.
      * @param {Function} callback Function to trigger.
      * @since 1.0.0
      * @example
@@ -461,7 +460,7 @@ export default class Modal {
      * Removes events for Modal object.
      *
      * @method off
-     * @param {String} event Event name.
+     * @param {String} event Event name. See config.events to know list of events.
      * @since 1.0.0
      * @returns {Modal} Returns the current Modal object.
      */
@@ -469,18 +468,6 @@ export default class Modal {
         if (Helper.hasProperty(this.config.events, event)) {
             this.config.events[event] = null;
         }
-        return this;
-    }
-
-    /**
-     * Removes Modal element from DOM.
-     *
-     * @method remove
-     * @since 1.0.0
-     * @returns {Modal} Returns the current Modal object.
-     */
-    remove(){
-        this.container.parentNode.removeChild(this.container);
         return this;
     }
 
@@ -511,29 +498,14 @@ export default class Modal {
     }
 
     /**
-     * Adds style to Modal container.
+     * Removes Modal element from DOM.
      *
-     * @method addStyle
-     * @param {String} name Name of style.
-     * @param {String} value Value of style.
+     * @method remove
      * @since 1.0.0
-     * @returns {Modal} Returns Returns the current Modal object.
+     * @returns {Modal} Returns the current Modal object.
      */
-    addStyle(name, value){
-        this.container.style[name] = value;
-        return this;
-    }
-
-    /**
-     * Removes style from Modal container.
-     *
-     * @method removeStyle
-     * @param {String} name Name of style.
-     * @since 1.0.0
-     * @returns {Modal} Returns Returns the current Modal object.
-     */
-    removeStyle(name){
-        this.container.style[name] = null;
+    remove(){
+        this.container.parentNode.removeChild(this.container);
         return this;
     }
 

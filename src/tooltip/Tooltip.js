@@ -21,7 +21,7 @@ export default class Tooltip {
      * @since 1.0.0
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
-    constructor(target, content = 'Hello Tooltip !') {
+    constructor(target, content = 'Tooltip !') {
 
         if (Helper.isString(target)) {
             target = document.querySelector(target);
@@ -44,6 +44,9 @@ export default class Tooltip {
         let rect = this.target.getBoundingClientRect();
         this.targetHeight = rect.height;
         this.targetWidth = rect.width;
+
+        // Todo : https://developer.mozilla.org/fr/docs/Web/API/Element/getBoundingClientRect
+        // Not support by edge
         this.targetX = rect.x;
         this.targetY = rect.y;
 
@@ -61,7 +64,7 @@ export default class Tooltip {
         this.container.style.position = 'fixed';
         this.container.style.zIndex = '1000';
         this.container.dataset.skyflowPlacement = 'bottom';
-        this.container.classList.add('skyflow-tooltip-container');
+        this.addClass('skyflow-tooltip-container');
         document.body.appendChild(this.container);
 
         /**
@@ -423,16 +426,13 @@ export default class Tooltip {
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
     show() {
-
         this.container.style.display = 'block';
         this.position(this.incrementX, this.incrementY);
-        this.container.classList.add('skyflow-tooltip-is-shown');
+        this.addClass('skyflow-tooltip-is-shown');
         this.container.style.visibility = 'visible';
-        // Trigger event
         if (this.config.events.show) {
             this.config.events.show.apply(null, [this]);
         }
-
         return this;
     }
 
@@ -484,19 +484,17 @@ export default class Tooltip {
     /**
      * Hides Tooltip.
      *
-     * @method show
+     * @method hide
      * @since 1.0.0
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
     hide() {
         this.container.style.display = 'none';
         this.container.style.visibility = 'hidden';
-        this.container.classList.remove('skyflow-tooltip-is-shown');
-        // Trigger event
+        this.removeClass('skyflow-tooltip-is-shown');
         if (this.config.events.hide) {
             this.config.events.hide.apply(null, [this]);
         }
-
         return this;
     }
 
@@ -509,19 +507,15 @@ export default class Tooltip {
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
     trigger(trigger) {
-
         if (!Helper.hasProperty(this.triggersHandler, trigger)) {
             return this;
         }
-
         Helper.removeEvent(this.target, 'mouseover', this.triggerEventCallback);
         Helper.removeEvent(this.target, 'mouseout', this.triggerEventCallback);
         Helper.removeEvent(this.target, 'click', this.triggerEventCallback);
-
         this.config.trigger = trigger;
         this.triggersHandler[trigger]();
         this.clickOut(this.isClickOut);
-
         return this;
     }
 
@@ -557,7 +551,7 @@ export default class Tooltip {
      * Adds child element to Tooltip.
      *
      * @method addChild
-     * @param {Element} child Child to add.
+     * @param {HTMLElement} child Child to add.
      * @since 1.0.0
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
@@ -603,7 +597,7 @@ export default class Tooltip {
      * Sets events for Tooltip object.
      *
      * @method on
-     * @param {String} event Event name.
+     * @param {String} event Event name. See config.events to know list of events.
      * @param {Function} callback Function to trigger.
      * @since 1.0.0
      * @example
@@ -625,7 +619,7 @@ export default class Tooltip {
      * Removes events for Tooltip object.
      *
      * @method off
-     * @param {String} event Event name.
+     * @param {String} event Event name. See config.events to know list of events.
      * @since 1.0.0
      * @returns {Tooltip} Returns the current Tooltip object.
      */
@@ -696,35 +690,6 @@ export default class Tooltip {
      */
     removeClass(name){
         this.container.classList.remove(name);
-
-        return this;
-    }
-
-    /**
-     * Adds style to Tooltip container.
-     *
-     * @method addStyle
-     * @param {String} name Name of style.
-     * @param {String} value Value of style.
-     * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
-     */
-    addStyle(name, value){
-        this.container.style[name] = value;
-
-        return this;
-    }
-
-    /**
-     * Removes style from Tooltip container.
-     *
-     * @method removeStyle
-     * @param {String} name Name of style.
-     * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
-     */
-    removeStyle(name){
-        this.container.style[name] = null;
 
         return this;
     }
