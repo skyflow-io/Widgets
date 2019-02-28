@@ -61,8 +61,6 @@ export default class Tooltip {
         this.container = document.createElement('div');
         this.container.style.visibility = 'hidden';
         this.container.style.display = 'none';
-        this.container.style.position = 'fixed';
-        this.container.style.zIndex = '1000';
         this.container.dataset.skyflowPlacement = 'bottom';
         this.addClass('skyflow-tooltip-container');
         document.body.appendChild(this.container);
