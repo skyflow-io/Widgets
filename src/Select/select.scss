@@ -1,0 +1,206 @@
+// Variables
+$color-primary: #30287E;
+$color-secondary: #FFFFFF;
+$color-danger: #CC0000;
+$font-color: #000118;
+$border-color: #BCC8DE;
+$color-placeholder: #BCC8DE;
+$transition-time: 0.3s;
+
+.skyflow-select-container {
+
+  width: 500px;
+  position: absolute;
+  z-index: 1000;
+  background-color: $color-secondary;
+
+  &.skyflow-select-is-open {
+    padding: 43px 0 0 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .skyflow-select-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    z-index: 1000;
+
+    .skyflow-select-search {
+      width: 100%;
+      display: block;
+      font-size: 16px;
+      padding: 8px 15px;
+      color: $font-color;
+      box-sizing: border-box;
+      background-color: $color-secondary;
+      border: 1px solid $border-color;
+      border-radius: 30px;
+      &::-webkit-input-placeholder {
+        color: $color-placeholder;
+        opacity: 1;
+        font-size: 14px;
+      }
+      &::-moz-placeholder {
+        color: $color-placeholder;
+        opacity: 1;
+        font-size: 14px;
+      }
+      &:-ms-input-placeholder {
+        color: $color-placeholder;
+        opacity: 1;
+        font-size: 14px;
+      }
+      &:-moz-placeholder {
+        color: $color-placeholder;
+        opacity: 1;
+        font-size: 14px;
+      }
+    }
+
+  }
+
+  &.skyflow-select-is-open {
+    .skyflow-select-header {
+      .skyflow-select-search {
+        padding: 12px 15px;
+        border-bottom: none;
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 8px 6px -6px #CCCCCC;
+      }
+    }
+  }
+
+  .skyflow-select-body {
+    height: 250px;
+    overflow: scroll;
+    display: none;
+    background-color: $color-secondary;
+    border: 1px solid $border-color;
+    border-radius: 0 0 15px 15px;
+
+    .skyflow-select-body-wrap {
+      display: block;
+      list-style: none;
+      padding: 0 15px;
+      margin: 0;
+
+      .skyflow-select-item {
+        padding: 10px 0;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        cursor: pointer;
+        &:first-child {
+          padding-top: 20px;
+        }
+        &:last-child {
+          padding-bottom: 20px;
+        }
+
+        &.skyflow-select-item-not-found {
+          display: none;
+        }
+
+        .skyflow-select-item-mark {
+          width: 20px;
+          height: 20px;
+          border: 2px solid $border-color;
+          background-color: $color-secondary;
+          position: relative;
+          border-radius: 50%;
+          transition: all $transition-time;
+          &:before {
+            position: absolute;
+            content: "";
+            height: 0;
+            width: 0;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-color: $color-primary;
+            border-radius: 50%;
+            transition: all $transition-time;
+          }
+
+        }
+
+        .skyflow-select-item-label {
+          width: 100%;
+          padding-left: 10px;
+        }
+
+        &.skyflow-select-item-selected {
+          .skyflow-select-item-mark {
+            border: 2px solid $color-primary;
+            &:before {
+              height: 12px;
+              width: 12px;
+            }
+          }
+
+          .skyflow-select-item-label {
+
+          }
+
+        }
+
+        &:hover {
+          .skyflow-select-item-mark {
+            border-color: $color-primary;
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+  &.skyflow-select-multiple-type {
+    .skyflow-select-body {
+      .skyflow-select-body-wrap {
+        .skyflow-select-item {
+          .skyflow-select-item-mark {
+            border-radius: 0;
+            width: 17px;
+            height: 17px;
+            &:before {
+              border-radius: 0;
+            }
+          }
+          &.skyflow-select-item-selected {
+            .skyflow-select-item-mark {
+              border: 2px solid $color-primary;
+              &:before {
+                height: 10px;
+                width: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.skyflow-select-is-open {
+    .skyflow-select-body {
+      display: block;
+    }
+  }
+
+  .skyflow-select-footer{
+    display: none;
+  }
+
+  &.skyflow-select-is-open {
+    .skyflow-select-footer{
+      display: block;
+    }
+  }
+
+}
