@@ -1,3 +1,7 @@
+import './tooltip.scss';
+import Helper from '../Helper.js';
+import Widget from '../Widget/Widget.js';
+
 /**
  * Powerful widget for describing and interacting with your elements.
  *
@@ -10,7 +14,7 @@
  *      let tooltip = new Tooltip('.my-trigger-selector', 'Hello world !');
  *      tooltip.placement('left').position('-6', null).trigger('click');
  */
-export default class Tooltip {
+export default class Tooltip extends Widget{
 
     /**
      * Constructor.
@@ -22,6 +26,7 @@ export default class Tooltip {
      * @returns {Tooltip} Returns an instance of Tooltip object.
      */
     constructor(target, content = 'Tooltip !') {
+        super();
 
         if (Helper.isString(target)) {
             target = document.querySelector(target);
@@ -149,6 +154,15 @@ export default class Tooltip {
              * @default 'hover'
              */
             trigger: 'hover',
+            /**
+             * Click out state.
+             *
+             * @property config.clickOut
+             * @type {Boolean}
+             * @since 1.0.0
+             * @default false
+             */
+            clickOut: false,
             /**
              * Tooltip events array.
              *
@@ -291,36 +305,8 @@ export default class Tooltip {
 
         };
 
-        /**
-         * Trigger event callback function.
-         *
-         * @method triggerEventCallback
-         * @param {Event} e Current Event object
-         * @since 1.0.0
-         * @returns {Tooltip} Returns an instance of Tooltip object.
-         */
-        this.triggerEventCallback = (e) => {
-
-            if (e.type === 'mouseover' || e.type === 'mouseout') {
-                let related = e.relatedTarget || e[(e.type === 'mouseout') ? 'toElement' : 'fromElement'] || null;
-                if (Helper.isChildOf(related, this.target) || related === this.target) {
-                    return false;
-                }
-            }
-
-            if (e.type === 'mouseover') {
-                this.show();
-            }
-
-            if (e.type === 'mouseout') {
-                this.hide();
-            }
-
-            if (e.type === 'click') {
-                this.isShown() ? this.hide() : this.show();
-            }
-
-        };
+        this.triggerEventCallback = this.triggerEventCallback.bind(this);
+        this.clickOutEventCallback = this.clickOutEventCallback.bind(this);
 
         /**
          * Tooltip trigger callback functions.
@@ -361,51 +347,13 @@ export default class Tooltip {
             manual: () => {},
         };
 
-        /**
-         * Click out event callback function.
-         *
-         * @method clickOutEventCallback
-         * @param {Event} e Current Event object
-         * @since 1.0.0
-         * @returns {Tooltip} Returns an instance of Tooltip object.
-         */
-        this.clickOutEventCallback = (e) => {
-
-            if (Helper.isChildOf(e.target, this.container) || (e.target === this.container)) {
-                return this;
-            }
-
-            if (Helper.isChildOf(e.target, this.target) || (e.target === this.target)) {
-                return this;
-            }
-
-            if (!this.isShown()) {
-                return this;
-            }
-
-            return this.hide();
-        };
-
-        /**
-         * Click out state.
-         *
-         * @property isClickOut
-         * @type {Boolean}
-         * @since 1.0.0
-         * @default false
-         */
-        this.isClickOut = false;
-
         if (Helper.isString(content)) {
             this.html(content);
         }
-
         if (Helper.isElement(content)) {
             this.addChild(content);
         }
-
         this.trigger(this.config.trigger);
-
         Helper.addEvent(window, 'scroll', ()=>{
             if(this.isShown()){
                 this.position(this.incrementX, this.incrementY);
@@ -413,6 +361,62 @@ export default class Tooltip {
         });
 
     }
+
+    /**
+     * Trigger event callback function.
+     *
+     * @method triggerEventCallback
+     * @param {Event} e Current Event object
+     * @since 1.0.0
+     * @returns {Tooltip} Returns an instance of Tooltip object.
+     */
+    triggerEventCallback(e) {
+
+        if (e.type === 'mouseover' || e.type === 'mouseout') {
+            let related = e.relatedTarget || e[(e.type === 'mouseout') ? 'toElement' : 'fromElement'] || null;
+            if (Helper.isChildOf(related, this.target) || related === this.target) {
+                return false;
+            }
+        }
+
+        if (e.type === 'mouseover') {
+            this.show();
+        }
+
+        if (e.type === 'mouseout') {
+            this.hide();
+        }
+
+        if (e.type === 'click') {
+            this.isShown() ? this.hide() : this.show();
+        }
+
+    };
+
+    /**
+     * Click out event callback function.
+     *
+     * @method clickOutEventCallback
+     * @param {Event} e Current Event object
+     * @since 1.0.0
+     * @returns {Tooltip} Returns an instance of Tooltip object.
+     */
+    clickOutEventCallback(e) {
+
+        if (Helper.isChildOf(e.target, this.container) || (e.target === this.container)) {
+            return this;
+        }
+
+        if (Helper.isChildOf(e.target, this.target) || (e.target === this.target)) {
+            return this;
+        }
+
+        if (!this.isShown()) {
+            return this;
+        }
+
+        return this.hide();
+    };
 
     /**
      * Shows Tooltip.
@@ -511,7 +515,7 @@ export default class Tooltip {
         Helper.removeEvent(this.target, 'click', this.triggerEventCallback);
         this.config.trigger = trigger;
         this.triggersHandler[trigger]();
-        this.clickOut(this.isClickOut);
+        this.clickOut(this.config.clickOut);
         return this;
     }
 
@@ -590,44 +594,6 @@ export default class Tooltip {
     }
 
     /**
-     * Sets events for Tooltip object.
-     *
-     * @method on
-     * @param {String} event Event name. See config.events to know list of events.
-     * @param {Function} callback Function to trigger.
-     * @since 1.0.0
-     * @example
-     *      let tooltip = new Tooltip('.my-tooltip-selector');
-     *      tooltip.on('show', (context) => {
-     *          console.log(context);
-     *      })
-     * @returns {Tooltip} Returns the current Tooltip object.
-     */
-    on(event, callback) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = callback;
-        }
-
-        return this;
-    }
-
-    /**
-     * Removes events for Tooltip object.
-     *
-     * @method off
-     * @param {String} event Event name. See config.events to know list of events.
-     * @since 1.0.0
-     * @returns {Tooltip} Returns the current Tooltip object.
-     */
-    off(event) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = null;
-        }
-
-        return this;
-    }
-
-    /**
      * Sets if Tooltip will close on click outside of the Tooltip and reference element.
      *
      * @method clickOut
@@ -636,56 +602,15 @@ export default class Tooltip {
      * @returns {Tooltip} Returns the current Tooltip object.
      */
     clickOut(close = true) {
-        
-        this.isClickOut = close;
+
+        this.config.clickOut = close;
         if (this.config.trigger === 'hover') {
             return this;
         }
         Helper.removeEvent(document, 'mouseup', this.clickOutEventCallback);
-        if (this.isClickOut === true) {
+        if (this.config.clickOut === true) {
             Helper.addEvent(document, 'mouseup', this.clickOutEventCallback);
         }
-
-        return this;
-    }
-
-    /**
-     * Removes Tooltip element from DOM.
-     *
-     * @method remove
-     * @since 1.0.0
-     * @returns {Tooltip} Returns the current Tooltip object.
-     */
-    remove(){
-        this.container.parentNode.removeChild(this.container);
-
-        return this;
-    }
-
-    /**
-     * Adds class to Tooltip container.
-     *
-     * @method addClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
-     */
-    addClass(name){
-        this.container.classList.add(name);
-
-        return this;
-    }
-
-    /**
-     * Removes class from Tooltip container.
-     *
-     * @method removeClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
-     */
-    removeClass(name){
-        this.container.classList.remove(name);
 
         return this;
     }

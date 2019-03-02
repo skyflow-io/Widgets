@@ -1,3 +1,8 @@
+import './notification.scss';
+import Helper from '../Helper.js';
+import Widget from '../Widget/Widget.js';
+import WidgetPart from '../WidgetPart/WidgetPart.js';
+
 /**
  * Display a dialog box/popup on top of the current page.
  *
@@ -15,162 +20,10 @@
  *          console.log('success');
  *      });
  */
-export default class Notification {
+export default class Notification extends Widget{
 
     constructor() {
-
-        function Part(part) {
-
-            /**
-             * Stores part element.
-             *
-             * @property container
-             * @type {HTMLElement}
-             * @since 1.0.0
-             */
-            this.this = part;
-
-            /**
-             * Shows Part.
-             *
-             * @method Part.show
-             * @since 1.0.0
-             * @returns {Part} Returns the current Part object.
-             */
-            this.show = ()=>{
-                this.this.style.display = 'block';
-                return this;
-            };
-
-            /**
-             * Checks if Part is displayed.
-             *
-             * @method Part.isActive
-             * @since 1.0.0
-             * @returns {Boolean} Returns true if Part is displayed and false otherwise.
-             */
-            this.isActive = ()=>{
-                return (window.getComputedStyle(this.this, null).getPropertyValue('display') !== 'none');
-            };
-
-            /**
-             * Hides Part.
-             *
-             * @method Part.hide
-             * @since 1.0.0
-             * @returns {Part} Returns the current Part object.
-             */
-            this.hide = ()=>{
-                this.this.style.display = 'none';
-                return this;
-            };
-
-            /**
-             * Sets string as Part content.
-             *
-             * @method Part.text
-             * @param {String} text Content of Part.
-             * @since 1.0.0
-             * @returns {Part} Returns an instance of Part object.
-             */
-            this.text = (text)=>{
-                this.this.textContent = text;
-                return this;
-            };
-
-            /**
-             * Sets HTML string as Part content.
-             *
-             * @method Part.html
-             * @param {String} html Content of Part.
-             * @since 1.0.0
-             * @returns {Part} Returns an instance of Part object.
-             */
-            this.html = (html)=>{
-                this.this.innerHTML = html;
-                return this;
-            };
-
-            /**
-             * Adds child element to Part.
-             *
-             * @method Part.addChild
-             * @param {HTMLElement} child Child to add.
-             * @since 1.0.0
-             * @returns {Part} Returns an instance of Part object.
-             */
-            this.addChild = (child)=>{
-                this.this.appendChild(child);
-                return this;
-            };
-
-            /**
-             * Adds class to Part.
-             *
-             * @method Part.addClass
-             * @param {String} name Class name.
-             * @since 1.0.0
-             * @returns {Part} Returns an instance of Part object.
-             */
-            this.addClass = (name)=>{
-                this.this.classList.add(name);
-                return this;
-            };
-
-            /**
-             * Removes class from Part.
-             *
-             * @method Part.removeClass
-             * @param {String} name Class name.
-             * @since 1.0.0
-             * @returns {Part} Returns an instance of Part object.
-             */
-            this.removeClass = (name)=>{
-                this.this.classList.remove(name);
-                return this;
-            };
-
-            /**
-             * Removes Part element from DOM.
-             *
-             * @method Part.remove
-             * @since 1.0.0
-             * @returns {Part} Returns the current Part object.
-             */
-            this.remove = ()=>{
-                this.this.parentNode.removeChild(this.this);
-                return this;
-            };
-
-            /**
-             * Adds event to Part element.
-             *
-             * @method Part.addEvent
-             * @param {String} event Event name.
-             * @param {Function} callback Event callback.
-             * @since 1.0.0
-             * @returns {Part} Returns the current Part object.
-             */
-            this.addEvent = (event, callback)=>{
-                Helper.addEvent(this.this, event, callback);
-                return this;
-            };
-
-            /**
-             * Removes event from Part element.
-             *
-             * @method Part.removeEvent
-             * @param {String} event Event name.
-             * @param {Function} callback Event callback.
-             * @since 1.0.0
-             * @returns {Part} Returns the current Part object.
-             */
-            this.removeEvent = (event, callback)=>{
-                Helper.removeEvent(this.this, event, callback);
-                return this;
-            };
-
-        }
+        super();
 
         /**
          * Notification container element.
@@ -194,10 +47,10 @@ export default class Notification {
          * Notification close button part.
          *
          * @property CloseButton
-         * @type {Part}
+         * @type {WidgetPart}
          * @since 1.0.0
          */
-        this.CloseButton = new Part(document.createElement('span'));
+        this.CloseButton = new WidgetPart(document.createElement('span'));
         this.CloseButton.show().addClass('skyflow-notification-close-button');
         this.CloseButton.addEvent('click', ()=>{
             this.hide();
@@ -208,10 +61,10 @@ export default class Notification {
          * Notification header part.
          *
          * @property Header
-         * @type {Part}
+         * @type {WidgetPart}
          * @since 1.0.0
          */
-        this.Header = new Part(document.createElement('div'));
+        this.Header = new WidgetPart(document.createElement('div'));
         this.Header.show().addClass('skyflow-notification-header');
         this.container.appendChild(this.Header.this);
 
@@ -219,10 +72,10 @@ export default class Notification {
          * Notification body part.
          *
          * @property Body
-         * @type {Part}
+         * @type {WidgetPart}
          * @since 1.0.0
          */
-        this.Body = new Part(document.createElement('div'));
+        this.Body = new WidgetPart(document.createElement('div'));
         this.Body.show().addClass('skyflow-notification-body');
         this.container.appendChild(this.Body.this);
 
@@ -453,80 +306,6 @@ export default class Notification {
         if (this.config.events.hide) {
             this.config.events.hide.apply(null, [this]);
         }
-        return this;
-    }
-
-    /**
-     * Sets events for Notification object.
-     *
-     * @method on
-     * @param {String} event Event name. See config.events to know list of events.
-     * @param {Function} callback Function to trigger.
-     * @since 1.0.0
-     * @example
-     *      let notification = new Notification();
-     *      notification.on('success', (context) => {
-     *          console.log(context);
-     *      })
-     * @returns {Notification} Returns the current Notification object.
-     */
-    on(event, callback) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = callback;
-        }
-        return this;
-    }
-
-    /**
-     * Removes events for Notification object.
-     *
-     * @method off
-     * @param {String} event Event name. See config.events to know list of events.
-     * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
-     */
-    off(event) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = null;
-        }
-        return this;
-    }
-
-    /**
-     * Adds class to Notification container.
-     *
-     * @method addClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
-     */
-    addClass(name){
-        this.container.classList.add(name);
-        return this;
-    }
-
-    /**
-     * Removes class from Notification container.
-     *
-     * @method removeClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
-     */
-    removeClass(name){
-        this.container.classList.remove(name);
-        return this;
-    }
-
-    /**
-     * Removes Notification element from DOM.
-     *
-     * @method remove
-     * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
-     */
-    remove(){
-        this.container.parentNode.removeChild(this.container);
         return this;
     }
 

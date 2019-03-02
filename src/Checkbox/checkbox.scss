@@ -1,15 +1,8 @@
 // Variables
 $color-primary: #30287E;
 $color-secondary: #FFFFFF;
+$color-inactive: #BCC8DE;
 $transition-time: 0.3s;
-
-// Mixins
-@mixin transition($property, $time: $transition-time){
-  -webkit-transition: $property $time;
-  -moz-transition: $property $time;
-  -o-transition: $property $time;
-  transition: $property $time;
-}
 
 .skyflow-checkbox-container {
 
@@ -26,13 +19,13 @@ $transition-time: 0.3s;
   input[type='checkbox'] + span.skyflow-checkbox-mark {
 
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 2px solid $color-primary;
+    width: 17px;
+    height: 17px;
+    border: 2px solid $color-inactive;
     vertical-align: middle;
     background-color: $color-secondary;
     position: relative;
-    @include transition(all);
+    transition: all $transition-time;
 
     &:before {
       position: absolute;
@@ -44,18 +37,23 @@ $transition-time: 0.3s;
       left: 0;
       right: 0;
       margin: auto;
-      background-color: $color-primary;
-      @include transition(all);
+      transition: all $transition-time;
     }
 
   }
 
   input[type='checkbox']:checked + span.skyflow-checkbox-mark {
-    border: 2px solid $color-primary;
+    border-color: $color-primary;
     &:before {
-      height: 12px;
-      width: 12px;
+      height: 10px;
+      width: 10px;
+      background-color: $color-primary;
     }
+  }
+
+  .skyflow-checkbox-label {
+    display: inline-block;
+    margin-left: 8px;
   }
 
 }

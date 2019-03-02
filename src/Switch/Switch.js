@@ -1,5 +1,6 @@
 import './switch.scss';
 import Helper from '../Helper.js';
+import Widget from '../Widget/Widget.js';
 
 /**
  * Custom switch button.
@@ -15,7 +16,7 @@ import Helper from '../Helper.js';
  *          console.log(context);
  *      });
  */
-export default class Switch {
+export default class Switch extends Widget{
 
     /**
      * Constructor.
@@ -26,6 +27,7 @@ export default class Switch {
      * @returns {Switch} Returns an instance of Switch object.
      */
     constructor(target) {
+        super();
 
         if (Helper.isString(target)) {
             target = document.querySelector(target);
@@ -120,80 +122,6 @@ export default class Switch {
      */
     check(){
         this.target.checked = true;
-        return this;
-    }
-
-    /**
-     * Sets events for Switch object.
-     *
-     * @method on
-     * @param {String} event Event name. See config.events to know list of events.
-     * @param {Function} callback Function to trigger.
-     * @since 1.0.0
-     * @example
-     *      let switch = new Switch();
-     *      switch.on('check', (context) => {
-     *          console.log(context);
-     *      })
-     * @returns {Switch} Returns the current Switch object.
-     */
-    on(event, callback) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = callback;
-        }
-        return this;
-    }
-
-    /**
-     * Removes events for Switch object.
-     *
-     * @method off
-     * @param {String} event Event name. See config.events to know list of events.
-     * @since 1.0.0
-     * @returns {Switch} Returns the current Switch object.
-     */
-    off(event) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = null;
-        }
-        return this;
-    }
-
-    /**
-     * Adds class to Switch container.
-     *
-     * @method addClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Switch} Returns the current Switch object.
-     */
-    addClass(name){
-        this.container.classList.add(name);
-        return this;
-    }
-
-    /**
-     * Removes class from Switch container.
-     *
-     * @method removeClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Switch} Returns the current Switch object.
-     */
-    removeClass(name){
-        this.container.classList.remove(name);
-        return this;
-    }
-
-    /**
-     * Removes Switch element from DOM.
-     *
-     * @method remove
-     * @since 1.0.0
-     * @returns {Switch} Returns the current Switch object.
-     */
-    remove(){
-        this.container.parentNode.removeChild(this.container);
         return this;
     }
 

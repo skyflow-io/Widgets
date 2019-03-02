@@ -5,6 +5,7 @@ $color-success: #007E33;
 $color-warning: #FF8800;
 $color-info: #0099CC;
 $color-error: #CC0000;
+$transition-time: 0.3s;
 
 .skyflow-notification-container {
   position: fixed;
@@ -34,6 +35,7 @@ $color-error: #CC0000;
     display: inline-block;
     border-radius: 50%;
     cursor: pointer;
+    transition: all $transition-time;
     &::after, &::before {
       content: '';
       position: absolute;

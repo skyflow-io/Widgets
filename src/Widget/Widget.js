@@ -21,7 +21,7 @@ export default class Widget {
      * Sets events.
      *
      * @method on
-     * @param {String} event Event name. See config.events to know list of events.
+     * @param {String} event Event name. See config.events array property to know list of events.
      * @param {Function} callback Function to trigger.
      * @since 1.0.0
      * @returns {Widget} Returns the current Widget object.
@@ -37,7 +37,7 @@ export default class Widget {
      * Removes events.
      *
      * @method off
-     * @param {String} event Event name. See config.events to know list of events.
+     * @param {String} event Event name. See config.events array property to know list of events.
      * @since 1.0.0
      * @returns {Widget} Returns the current Widget object.
      */

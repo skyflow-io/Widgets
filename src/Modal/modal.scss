@@ -2,6 +2,7 @@
 $color-primary: #30287E;
 $color-secondary: #FFFFFF;
 $color-danger: #CC0000;
+$transition-time: 0.3s;
 
 .skyflow-modal-container {
   width: 100%;
@@ -40,6 +41,7 @@ $color-danger: #CC0000;
       display: inline-block;
       border-radius: 50%;
       cursor: pointer;
+      transition: all $transition-time;
       &::after, &::before {
         content: '';
         position: absolute;
@@ -83,19 +85,20 @@ $color-danger: #CC0000;
         padding: 8px 10px;
         display: inline-block;
         min-width: 120px;
-        border: 1px solid $color-primary;
+        border: 2px solid $color-primary;
         cursor: pointer;
         text-align: center;
         text-decoration: none;
         border-radius: 80px;
         margin: 0 10px;
+        transition: all $transition-time;
         &:hover {
           color: $color-secondary;
           background-color: $color-primary;
         }
         &.skyflow-modal-cancel-button {
           color: $color-danger;
-          border: 1px solid $color-danger;
+          border-color: $color-danger;
           &:hover {
             color: $color-secondary;
             background-color: $color-danger;

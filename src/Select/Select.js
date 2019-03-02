@@ -1,5 +1,5 @@
 import './select.scss';
-// import Helper from '../Helper.js';
+import Helper from '../Helper.js';
 import Widget from '../Widget/Widget.js';
 import WidgetPart from '../WidgetPart/WidgetPart.js';
 

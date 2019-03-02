@@ -1,21 +1,8 @@
 // Variables
 $color-primary: #30287E;
 $color-secondary: #FFFFFF;
+$color-inactive: #BCC8DE;
 $transition-time: 0.3s;
-
-// Mixins
-@mixin transition($property, $time: $transition-time){
-  -webkit-transition: $property $time;
-  -moz-transition: $property $time;
-  -o-transition: $property $time;
-  transition: $property $time;
-}
-
-@mixin border-radius($value: 50%) {
-  -webkit-border-radius: $value;
-  -moz-border-radius: $value;
-  border-radius: $value;
-}
 
 .skyflow-switch-container {
 
@@ -35,12 +22,11 @@ $transition-time: 0.3s;
     width: 100%;
     position: relative;
     display: inline-block;
-    //position: absolute;
-    border: 2px solid $color-primary;
+    border: 2px solid $color-inactive;
     background-color: $color-secondary;
     cursor: pointer;
-    @include border-radius(30px);
-    @include transition(all);
+    border-radius: 30px;
+    transition: all $transition-time;
 
     &:before {
       position: absolute;
@@ -51,19 +37,17 @@ $transition-time: 0.3s;
       top: 0;
       bottom: 0;
       margin: auto;
-      background-color: $color-primary;
-      //background-color: $color-inactive;
-      @include border-radius();
-      @include transition(all);
+      background-color: $color-inactive;
+      border-radius: 50%;
+      transition: all $transition-time;
     }
 
   }
 
   input[type='checkbox']:checked + span.skyflow-switch-mark {
-    //border: 2px solid $color-primary;
-    background-color: $color-primary;
+    border-color: $color-primary;
     &:before {
-      background-color: $color-secondary;
+      background-color: $color-primary;
       left: 27px;
     }
   }

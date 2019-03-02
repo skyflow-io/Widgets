@@ -1,3 +1,7 @@
+import './radio.scss';
+import Helper from '../Helper.js';
+import Widget from '../Widget/Widget.js';
+
 /**
  * Custom radio button.
  *
@@ -12,7 +16,7 @@
  *          console.log(context);
  *      });
  */
-export default class Radio {
+export default class Radio extends Widget{
 
     /**
      * Constructor.
@@ -24,6 +28,7 @@ export default class Radio {
      * @returns {Radio} Returns an instance of Radio object.
      */
     constructor(target, label) {
+        super();
 
         if (Helper.isString(target)) {
             target = document.querySelector(target);
@@ -124,80 +129,6 @@ export default class Radio {
      */
     check(){
         this.target.checked = true;
-        return this;
-    }
-
-    /**
-     * Sets events for Radio object.
-     *
-     * @method on
-     * @param {String} event Event name. See config.events to know list of events.
-     * @param {Function} callback Function to trigger.
-     * @since 1.0.0
-     * @example
-     *      let radio = new Radio();
-     *      radio.on('check', (context) => {
-     *          console.log(context);
-     *      })
-     * @returns {Radio} Returns the current Radio object.
-     */
-    on(event, callback) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = callback;
-        }
-        return this;
-    }
-
-    /**
-     * Removes events for Radio object.
-     *
-     * @method off
-     * @param {String} event Event name. See config.events to know list of events.
-     * @since 1.0.0
-     * @returns {Radio} Returns the current Radio object.
-     */
-    off(event) {
-        if (Helper.hasProperty(this.config.events, event)) {
-            this.config.events[event] = null;
-        }
-        return this;
-    }
-
-    /**
-     * Adds class to Radio container.
-     *
-     * @method addClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Radio} Returns the current Radio object.
-     */
-    addClass(name){
-        this.container.classList.add(name);
-        return this;
-    }
-
-    /**
-     * Removes class from Radio container.
-     *
-     * @method removeClass
-     * @param {String} name Class name.
-     * @since 1.0.0
-     * @returns {Radio} Returns the current Radio object.
-     */
-    removeClass(name){
-        this.container.classList.remove(name);
-        return this;
-    }
-
-    /**
-     * Removes Radio element from DOM.
-     *
-     * @method remove
-     * @since 1.0.0
-     * @returns {Radio} Returns the current Radio object.
-     */
-    remove(){
-        this.container.parentNode.removeChild(this.container);
         return this;
     }
 
