@@ -303,11 +303,6 @@ export default class Select extends Widget {
     itemClickEventCallback(e) {
         let id = e.currentTarget.id.replace('item-', '');
         this.toggleItem(this.items[id] ? this.items[id].Item : null);
-        if(!this.config.multiple && !this.selectedItem){
-            id = this.target.options[this.target.selectedIndex].id.replace('option-', '');
-            let item = this.items[id];
-            this.selectItem(item ? item.Item : null);
-        }
         return this;
     }
 
@@ -480,11 +475,14 @@ export default class Select extends Widget {
         if (!Item || !option) {
             return this;
         }
-        if (!this.config.multiple && this.selectedItem) {
-            this.unSelectItem(this.items[this.selectedItem] ? this.items[this.selectedItem].Item : null);
+        if (!this.config.multiple && this.selectedItem === id) {
+            return this;
+        }
+        if(this.items[this.selectedItem]){
+            this.items[this.selectedItem].Item.removeClass('skyflow-select-item-selected');
         }
         option.selected = true;
-        item.addClass('skyflow-select-item-selected');
+        Item.addClass('skyflow-select-item-selected');
         this.selectedItem = id;
         if(this.config.multiple){
             this.selectedItems[id] = true;
@@ -513,8 +511,11 @@ export default class Select extends Widget {
         if (!Item || !option) {
             return this;
         }
+        if (!this.config.multiple && this.selectedItem === id) {
+            return this;
+        }
         option.selected = false;
-        item.removeClass('skyflow-select-item-selected');
+        Item.removeClass('skyflow-select-item-selected');
         this.selectedItem = null;
         this.lastSelectedItem = id;
         if(this.config.multiple){
