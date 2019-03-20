@@ -1,0 +1,354 @@
+@font-face {
+  font-family: 'skyflow-advanced-uploader';
+  src:  url('./skyflow-advanced-uploader.eot?ez2cxt');
+  src:  url('./skyflow-advanced-uploader.eot?ez2cxt#iefix') format('embedded-opentype'),
+    url('./skyflow-advanced-uploader.ttf?ez2cxt') format('truetype'),
+    url('./skyflow-advanced-uploader.woff?ez2cxt') format('woff'),
+    url('./skyflow-advanced-uploader.svg?ez2cxt#skyflow-advanced-uploader') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-skyflow-advanced-uploader-"], [class*=" icon-skyflow-advanced-uploader-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'skyflow-advanced-uploader' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-skyflow-advanced-uploader-files:before {
+  content: "\e90b";
+}
+.icon-skyflow-advanced-uploader-aac:before {
+  content: "\e900";
+  color: #f15642;
+}
+.icon-skyflow-advanced-uploader-accdb:before {
+  content: "\e901";
+  color: #ba141a;
+}
+.icon-skyflow-advanced-uploader-aepx:before {
+  content: "\e902";
+  color: #d291ff;
+}
+.icon-skyflow-advanced-uploader-ai:before {
+  content: "\e903";
+  color: #5d4037;
+}
+.icon-skyflow-advanced-uploader-aiff:before {
+  content: "\e904";
+  color: #ff8c5a;
+}
+.icon-skyflow-advanced-uploader-app:before {
+  content: "\e905";
+  color: #00acea;
+}
+.icon-skyflow-advanced-uploader-asp:before {
+  content: "\e906";
+  color: #2d6431;
+}
+.icon-skyflow-advanced-uploader-aspx:before {
+  content: "\e907";
+  color: #57be5e;
+}
+.icon-skyflow-advanced-uploader-avi:before {
+  content: "\e908";
+  color: #4398d1;
+}
+.icon-skyflow-advanced-uploader-bmp:before {
+  content: "\e909";
+  color: #4caec4;
+}
+.icon-skyflow-advanced-uploader-c:before {
+  content: "\e90a";
+}
+.icon-skyflow-advanced-uploader-cpp:before {
+  content: "\e90d";
+  color: #00599c;
+}
+.icon-skyflow-advanced-uploader-css:before {
+  content: "\e90e";
+  color: #1572b6;
+}
+.icon-skyflow-advanced-uploader-csv:before {
+  content: "\e90f";
+  color: #057212;
+}
+.icon-skyflow-advanced-uploader-dat:before {
+  content: "\e910";
+  color: #d84c73;
+}
+.icon-skyflow-advanced-uploader-dbf:before {
+  content: "\e911";
+  color: #8f71ff;
+}
+.icon-skyflow-advanced-uploader-delete:before {
+  content: "\e912";
+}
+.icon-skyflow-advanced-uploader-dmg:before {
+  content: "\e913";
+  color: #576d7e;
+}
+.icon-skyflow-advanced-uploader-doc:before {
+  content: "\e914";
+  color: #1565c0;
+}
+.icon-skyflow-advanced-uploader-docx:before {
+  content: "\e915";
+  color: #2c67ba;
+}
+.icon-skyflow-advanced-uploader-done:before {
+  content: "\e916";
+}
+.icon-skyflow-advanced-uploader-dwg:before {
+  content: "\e918";
+  color: #421b9b;
+}
+.icon-skyflow-advanced-uploader-dwt:before {
+  content: "\e919";
+  color: #35fa00;
+}
+.icon-skyflow-advanced-uploader-dxf:before {
+  content: "\e91a";
+}
+.icon-skyflow-advanced-uploader-edit:before {
+  content: "\e91b";
+}
+.icon-skyflow-advanced-uploader-eps:before {
+  content: "\e91c";
+  color: #71a0a5;
+}
+.icon-skyflow-advanced-uploader-exe:before {
+  content: "\e91d";
+  color: #014441;
+}
+.icon-skyflow-advanced-uploader-fla:before {
+  content: "\e91e";
+  color: #cf3030;
+}
+.icon-skyflow-advanced-uploader-flv:before {
+  content: "\e91f";
+  color: #f7b84e;
+}
+.icon-skyflow-advanced-uploader-gif:before {
+  content: "\e920";
+  color: #1cb3c8;
+}
+.icon-skyflow-advanced-uploader-git:before {
+  content: "\e921";
+  color: #f05032;
+}
+.icon-skyflow-advanced-uploader-gp:before {
+  content: "\e922";
+  color: #cfd8dc;
+}
+.icon-skyflow-advanced-uploader-h:before {
+  content: "\e923";
+}
+.icon-skyflow-advanced-uploader-html:before {
+  content: "\e924";
+  color: #e45026;
+}
+.icon-skyflow-advanced-uploader-ics:before {
+  content: "\e925";
+  color: #057212;
+}
+.icon-skyflow-advanced-uploader-indd:before {
+  content: "\e926";
+  color: #fd3f93;
+}
+.icon-skyflow-advanced-uploader-iso:before {
+  content: "\e927";
+  color: #dee1ec;
+}
+.icon-skyflow-advanced-uploader-jar:before {
+  content: "\e928";
+  color: #f8582a;
+}
+.icon-skyflow-advanced-uploader-java:before {
+  content: "\e929";
+  color: #007396;
+}
+.icon-skyflow-advanced-uploader-jpg:before {
+  content: "\e92a";
+  color: #009f9d;
+}
+.icon-skyflow-advanced-uploader-js:before {
+  content: "\e92b";
+  color: #fdb44b;
+}
+.icon-skyflow-advanced-uploader-json:before {
+  content: "\e92c";
+  color: #5dc0a6;
+}
+.icon-skyflow-advanced-uploader-key:before {
+  content: "\e92d";
+}
+.icon-skyflow-advanced-uploader-m4v:before {
+  content: "\e92e";
+  color: #90007f;
+}
+.icon-skyflow-advanced-uploader-mcat:before {
+  content: "\e92f";
+  color: #add5ec;
+}
+.icon-skyflow-advanced-uploader-md:before {
+  content: "\e930";
+  color: #4a4a48;
+}
+.icon-skyflow-advanced-uploader-mid:before {
+  content: "\e931";
+  color: #488b8f;
+}
+.icon-skyflow-advanced-uploader-mov:before {
+  content: "\e932";
+  color: #c56868;
+}
+.icon-skyflow-advanced-uploader-mp3:before {
+  content: "\e933";
+  color: #116ab1;
+}
+.icon-skyflow-advanced-uploader-mp4:before {
+  content: "\e934";
+  color: #9a1ba0;
+}
+.icon-skyflow-advanced-uploader-mpg:before {
+  content: "\e935";
+  color: #9795cf;
+}
+.icon-skyflow-advanced-uploader-numbers:before {
+  content: "\e936";
+}
+.icon-skyflow-advanced-uploader-odp:before {
+  content: "\e937";
+  color: #ff8c5a;
+}
+.icon-skyflow-advanced-uploader-ods:before {
+  content: "\e938";
+  color: #a1b13a;
+}
+.icon-skyflow-advanced-uploader-odt:before {
+  content: "\e939";
+  color: #53a2f5;
+}
+.icon-skyflow-advanced-uploader-pages:before {
+  content: "\e93a";
+}
+.icon-skyflow-advanced-uploader-pdf:before {
+  content: "\e93b";
+  color: #cc4b4c;
+}
+.icon-skyflow-advanced-uploader-php:before {
+  content: "\e93c";
+  color: #777bb4;
+}
+.icon-skyflow-advanced-uploader-pkg:before {
+  content: "\e93d";
+  color: #a81d33;
+}
+.icon-skyflow-advanced-uploader-png:before {
+  content: "\e93e";
+  color: #0c907d;
+}
+.icon-skyflow-advanced-uploader-ppt:before {
+  content: "\e93f";
+  color: #ed6f35;
+}
+.icon-skyflow-advanced-uploader-prproj:before {
+  content: "\e940";
+  color: #ea77ff;
+}
+.icon-skyflow-advanced-uploader-psd:before {
+  content: "\e941";
+  color: #005fad;
+}
+.icon-skyflow-advanced-uploader-py:before {
+  content: "\e942";
+  color: #3776ab;
+}
+.icon-skyflow-advanced-uploader-qt:before {
+  content: "\e943";
+}
+.icon-skyflow-advanced-uploader-rar:before {
+  content: "\e944";
+  color: #714;
+}
+.icon-skyflow-advanced-uploader-rb:before {
+  content: "\e945";
+  color: #cc342d;
+}
+.icon-skyflow-advanced-uploader-rtf:before {
+  content: "\e946";
+  color: #dfbaf7;
+}
+.icon-skyflow-advanced-uploader-sass:before {
+  content: "\e947";
+  color: #c69;
+}
+.icon-skyflow-advanced-uploader-sesx:before {
+  content: "\e948";
+  color: #00e4bb;
+}
+.icon-skyflow-advanced-uploader-sh:before {
+  content: "\e949";
+  color: #5391fe;
+}
+.icon-skyflow-advanced-uploader-sql:before {
+  content: "\e94a";
+  color: #4c4c4c;
+}
+.icon-skyflow-advanced-uploader-svg:before {
+  content: "\e94b";
+  color: #8b104e;
+}
+.icon-skyflow-advanced-uploader-tar:before {
+  content: "\e94c";
+  color: #57607d;
+}
+.icon-skyflow-advanced-uploader-tga:before {
+  content: "\e94d";
+  color: #02bcd4;
+}
+.icon-skyflow-advanced-uploader-tgz:before {
+  content: "\e94e";
+  color: #c7b198;
+}
+.icon-skyflow-advanced-uploader-tiff:before {
+  content: "\e94f";
+  color: #596e79;
+}
+.icon-skyflow-advanced-uploader-txt:before {
+  content: "\e950";
+  color: #bbb;
+}
+.icon-skyflow-advanced-uploader-upload:before {
+  content: "\e951";
+}
+.icon-skyflow-advanced-uploader-wav:before {
+  content: "\e952";
+  color: #077aca;
+}
+.icon-skyflow-advanced-uploader-xls:before {
+  content: "\e953";
+  color: #9ecba4;
+}
+.icon-skyflow-advanced-uploader-xml:before {
+  content: "\e954";
+  color: #d45a36;
+}
+.icon-skyflow-advanced-uploader-yml:before {
+  content: "\e955";
+  color: #ca431d;
+}
+.icon-skyflow-advanced-uploader-zip:before {
+  content: "\e956";
+  color: #57607d;
+}

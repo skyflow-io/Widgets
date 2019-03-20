@@ -1,0 +1,165 @@
+@import "fonts/font.css";
+
+// Variables
+$color-primary: #30287E;
+$color-secondary: #FFFFFF;
+$color-inactive: #BCC8DE;
+$color-shadow: #333333;
+$color-error: #CC0000;
+$font-color: #000118;
+$transition-time: 0.3s;
+
+.skyflow-advanced-uploader-container {
+
+  width: 700px;
+  height: 400px;
+  border: 1px solid $color-inactive;
+  position: relative;
+  color: $font-color;
+  padding: 5px 5px 83px 5px;
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+
+  .skyflow-advanced-uploader-body {
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    border-radius: 10px;
+    border: 1px dashed $color-inactive;
+    text-align: center;
+    line-height: 326px;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .skyflow-advanced-uploader-body {
+    border-radius: 0;
+    padding: 0 30px;
+    line-height: normal;
+    overflow-y: auto;
+    .skyflow-advanced-uploader-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 0;
+      margin: 0;
+      border-bottom: 1px dashed $color-primary;
+      &:last-child{
+        border: none;
+      }
+      .skyflow-advanced-uploader-thumbnail {
+        width: 100px;
+        height: 80px;
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        i {
+          color: $color-secondary;
+          font-size: 70px;
+          width: 70px;
+          height: 70px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto 0;
+        }
+      }
+      .skyflow-advanced-uploader-file-name {
+        width: 100%;
+        text-align: left;
+        padding: 0 15px;
+        word-break: break-all;
+        .skyflow-advanced-uploader-file-name-edit {
+          width: 100%;
+          display: block;
+          font-size: 16px;
+          padding: 8px 15px;
+          box-sizing: border-box;
+          background-color: $color-secondary;
+          border: 1px solid $color-inactive;
+          border-radius: 30px;
+          &::-webkit-input-placeholder {
+            color: $color-inactive;
+            opacity: 1;
+            font-size: 14px;
+          }
+          &::-moz-placeholder {
+            color: $color-inactive;
+            opacity: 1;
+            font-size: 14px;
+          }
+          &:-ms-input-placeholder {
+            color: $color-inactive;
+            opacity: 1;
+            font-size: 14px;
+          }
+          &:-moz-placeholder {
+            color: $color-inactive;
+            opacity: 1;
+            font-size: 14px;
+          }
+        }
+        .skyflow-advanced-uploader-error-message {
+          display: block;
+          color: $color-error;
+          font-style: italic;
+          margin-top: 10px;
+        }
+      }
+      .skyflow-advanced-uploader-action {
+        width: 160px;
+        text-align: right;
+        color: $color-primary;
+        font-size: 20px;
+        i {
+          font-size: 25px;
+          color: $color-inactive;
+          display: inline-block;
+          margin: 5px;
+          cursor: pointer;
+          transition: color $transition-time;
+          &:hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+
+  .skyflow-advanced-uploader-footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 -2px 6px -5px $color-shadow;
+    .skyflow-advanced-uploader-select-files-button,
+    .skyflow-advanced-uploader-select-send-all-button{
+      color: $color-primary;
+      font-size: 16px;
+      background-color: transparent;
+      padding: 8px 15px;
+      display: inline-block;
+      min-width: 120px;
+      border: 1px solid $color-primary;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 80px;
+      margin: 0 10px;
+      transition: all $transition-time;
+      &:hover {
+        color: $color-secondary;
+        background-color: $color-primary;
+      }
+    }
+  }
+
+}
