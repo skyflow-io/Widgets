@@ -11,6 +11,8 @@ import WidgetPart from '../WidgetPart/WidgetPart.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @requires WidgetPart
+ * @extends Widget
  * @example
  *      let notification = new Notification();
  *      notification.showDuration(8000);
@@ -195,7 +197,7 @@ export default class Notification extends Widget{
      * Sets Notification show duration.
      *
      * @method showDuration
-     * @param {Boolean} duration Duration in ms.
+     * @param {Number} duration Duration in ms.
      * @since 1.0.0
      * @returns {Notification} Returns the current Notification object.
      */

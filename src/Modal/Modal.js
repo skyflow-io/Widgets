@@ -11,6 +11,8 @@ import WidgetPart from '../WidgetPart/WidgetPart.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @requires WidgetPart
+ * @extends Widget
  * @example
  *      let modal = new Modal();
  *      modal.Header.text('My modal title');
@@ -144,9 +146,9 @@ export default class Modal extends Widget{
              * Modal trigger element.
              *
              * @property config.trigger
-             * @type {String}
+             * @type {HTMLElement}
              * @since 1.0.0
-             * @default 'hover'
+             * @default null
              */
             trigger: null,
             /**
@@ -211,7 +213,6 @@ export default class Modal extends Widget{
         this.show();
     };
 
-
     /**
      * Shows Modal.
      *
@@ -272,7 +273,7 @@ export default class Modal extends Widget{
      * Sets HTMLElement to use to trigger Modal.
      *
      * @method trigger
-     * @param {HTMLElement|String} element Type of trigger.
+     * @param {HTMLElement|String} element HTMLElement to use.
      * @since 1.0.0
      * @returns {Modal} Returns the current Modal object.
      */

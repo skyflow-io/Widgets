@@ -10,6 +10,7 @@ import Widget from '../Widget/Widget.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @extends Widget
  * @example
  *      let switch = new Switch('.my-input-element');
  *      switch.on('check', (context) => {

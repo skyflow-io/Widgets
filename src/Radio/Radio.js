@@ -10,6 +10,7 @@ import Widget from '../Widget/Widget.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @extends Widget
  * @example
  *      let radio = new Radio('.my-input-element');
  *      radio.on('check', (context) => {

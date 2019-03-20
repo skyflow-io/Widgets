@@ -10,6 +10,7 @@ import Widget from '../Widget/Widget.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @extends Widget
  * @example
  *      let tooltip = new Tooltip('.my-trigger-selector', 'Hello world !');
  *      tooltip.placement('left').position('-6', null).trigger('click');

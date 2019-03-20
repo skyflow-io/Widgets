@@ -10,6 +10,7 @@ import Widget from '../Widget/Widget.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @extends Widget
  * @example
  *      let checkbox = new Checkbox('.my-input-element');
  *      checkbox.on('check', (context) => {
