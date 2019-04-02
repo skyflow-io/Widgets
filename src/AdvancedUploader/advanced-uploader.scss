@@ -26,18 +26,10 @@ $transition-time: 0.3s;
     width: 100%;
     height: 100%;
     padding: 0 30px;
-    border-radius: 10px;
-    border: 1px dashed $color-inactive;
     text-align: center;
-    line-height: 326px;
     box-sizing: border-box;
     margin: 0;
-  }
-
-  .skyflow-advanced-uploader-body {
     border-radius: 0;
-    padding: 0 30px;
-    line-height: normal;
     overflow-y: auto;
     .skyflow-advanced-uploader-item {
       display: flex;

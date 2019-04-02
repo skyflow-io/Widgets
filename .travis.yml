@@ -20,7 +20,10 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: 
+  script:
+    ssh lewebpedagogique@51.15.187.88 mkdir -p /srv/http/skyflow/doc &&
     rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/doc/widgets.json lewebpedagogique@51.15.187.88:/srv/http/skyflow/doc/widgets.json
   on:
     branch: master
+notifications:
+  webhooks: https://skyflow-travis-telegram-bot.herokuapp.com/
