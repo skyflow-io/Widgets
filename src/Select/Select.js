@@ -11,6 +11,8 @@ import WidgetPart from '../WidgetPart/WidgetPart.js';
  * @author Skyflow
  * @version 1.0.0
  * @requires Helper
+ * @requires WidgetPart
+ * @extends Widget
  * @example
  *      let select = new Select('#friends');
  *      select.addItem('myValue', 'myLabel');
@@ -87,6 +89,7 @@ export default class Select extends Widget {
             //     'Item': '',
             //     'Mark': '',
             //     'Label': '',
+            //     'value': item value
             // }
         };
 
@@ -229,40 +232,45 @@ export default class Select extends Widget {
                  * Select open event.
                  *
                  * @property config.events.open
-                 * @type {Object}
+                 * @type {Function}
                  * @since 1.0.0
+                 * @default null
                  */
                 open: null,
                 /**
                  * Select close event.
                  *
                  * @property config.events.close
-                 * @type {Object}
+                 * @type {Function}
                  * @since 1.0.0
+                 * @default null
                  */
                 close: null,
                 /**
                  * Select search event.
                  *
                  * @property config.events.search
-                 * @type {Object}
+                 * @type {Function}
                  * @since 1.0.0
+                 * @default null
                  */
                 search: null,
                 /**
                  * Select select event.
                  *
                  * @property config.events.select
-                 * @type {Object}
+                 * @type {Function}
                  * @since 1.0.0
+                 * @default null
                  */
                 select: null,
                 /**
                  * Select unselect event.
                  *
                  * @property config.events.unselect
-                 * @type {Object}
+                 * @type {Function}
                  * @since 1.0.0
+                 * @default null
                  */
                 unselect: null,
             },
@@ -344,7 +352,6 @@ export default class Select extends Widget {
 
         // -- value
         this.items[id].value = value;
-
         // -- mark
         let Mark = new WidgetPart(document.createElement('span'));
         Mark.addClass('skyflow-select-item-mark');
@@ -407,7 +414,7 @@ export default class Select extends Widget {
      * @method getItemById
      * @param {String} id Id of item.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns WidgetPart of item.
+     * @returns {WidgetPart|null} Returns WidgetPart of item.
      */
     getItemById(id) {
         try {
@@ -439,7 +446,7 @@ export default class Select extends Widget {
     /**
      * Gets Select item using its index.
      *
-     * @method getItemByValue
+     * @method getItemByIndex
      * @param {Number} index Index of item.
      * @since 1.0.0
      * @returns {WidgetPart} Returns WidgetPart of item.
