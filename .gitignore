@@ -6,3 +6,8 @@
 /dev/
 /docker/
 /src/Helper.js
+/vendor/
+/composer.json
+/composer.lock
+/doc/
+/data/

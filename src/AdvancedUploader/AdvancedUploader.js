@@ -39,7 +39,7 @@ export default class AdvancedUploader extends Widget{
      * @method constructor
      * @param {HTMLInputElement|String} target AdvancedUploader target. Can be a css selector or HTML Input element with file type.
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns an instance of AdvancedUploader object.
+     * @return {AdvancedUploader} Returns an instance of AdvancedUploader object.
      */
     constructor(target) {
         super();
@@ -335,7 +335,7 @@ export default class AdvancedUploader extends Widget{
      *
      * @method triggerEventCallback
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     triggerEventCallback() {
         this.target.click();
@@ -348,7 +348,7 @@ export default class AdvancedUploader extends Widget{
      * @method validEditionItemEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     validEditionItemEventCallback(e){
         if(e.type === 'keyup' && e.keyCode !== 13){
@@ -373,7 +373,7 @@ export default class AdvancedUploader extends Widget{
      * @method editItemEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     editItemEventCallback(e){
         let id = e.target.dataset.id;
@@ -387,7 +387,7 @@ export default class AdvancedUploader extends Widget{
      * @method removeItemEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     removeItemEventCallback(e){
         let id = e.target.dataset.id;
@@ -543,7 +543,7 @@ export default class AdvancedUploader extends Widget{
      * @method getItemById
      * @param {String} id Id of item.
      * @since 1.0.0
-     * @returns {WidgetPart|null} Returns WidgetPart of item.
+     * @return {WidgetPart|null} Returns WidgetPart of item.
      */
     getItemById(id) {
         try {
@@ -559,7 +559,7 @@ export default class AdvancedUploader extends Widget{
      * @method getItemByIndex
      * @param {Number} index Index of item.
      * @since 1.0.0
-     * @returns {WidgetPart|null} Returns WidgetPart of item.
+     * @return {WidgetPart|null} Returns WidgetPart of item.
      */
     getItemByIndex(index) {
         let item = this.Body.this.querySelectorAll('.skyflow-advanced-uploader-item')[index];
@@ -577,7 +577,7 @@ export default class AdvancedUploader extends Widget{
      * @method getItemId
      * @param {WidgetPart} item Use getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {String|null} Returns item id or null if id not found.
+     * @return {String|null} Returns item id or null if id not found.
      */
     getItemId(item){
         try {
@@ -593,7 +593,7 @@ export default class AdvancedUploader extends Widget{
      * @method removeItem
      * @param {WidgetPart} item Use getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     removeItem(item){
         let id = this.getItemId(item);
@@ -611,7 +611,7 @@ export default class AdvancedUploader extends Widget{
      * @method editItem
      * @param {WidgetPart} item Use getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     editItem(item){
         let id = this.getItemId(item);
@@ -635,7 +635,7 @@ export default class AdvancedUploader extends Widget{
      * @method multiple
      * @param {Boolean} multiple If true, AdvancedUploader will have multiple files.
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     multiple(multiple = true) {
         this.config.multiple = multiple;
@@ -657,7 +657,7 @@ export default class AdvancedUploader extends Widget{
      *      let au = new AdvancedUploader('#file');
      *      au.itemActions({edit: false});
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     itemActions(actions){
         let itemActions = this.config.actions.item;
@@ -674,7 +674,7 @@ export default class AdvancedUploader extends Widget{
      *      let au = new AdvancedUploader('#file');
      *      au.globalActions({send: false});
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     globalActions(actions){
         let globalActions = this.config.actions.global;
@@ -694,7 +694,7 @@ export default class AdvancedUploader extends Widget{
      * @method trigger
      * @param {HTMLElement|String} element HTMLElement to use.
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     trigger(element){
         if(Helper.isString(element)){
@@ -725,7 +725,7 @@ export default class AdvancedUploader extends Widget{
      *          }
      *      });
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     thumbnails(thumbnails){
         this.config.thumbnails = Object.assign({}, this.config.thumbnails, thumbnails);
@@ -747,7 +747,7 @@ export default class AdvancedUploader extends Widget{
      *          doc: true,
      *      });
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     allowedTypes(types){
         this.config.allowedTypes = Object.assign({}, this.config.allowedTypes, types);
@@ -759,7 +759,7 @@ export default class AdvancedUploader extends Widget{
      *
      * @method update
      * @since 1.0.0
-     * @returns {AdvancedUploader} Returns the current AdvancedUploader object.
+     * @return {AdvancedUploader} Returns the current AdvancedUploader object.
      */
     update(){
         this.trigger(this.config.trigger);

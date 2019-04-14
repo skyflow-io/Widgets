@@ -33,7 +33,7 @@ export default class Select extends Widget {
      * @method constructor
      * @param {HTMLSelectElement|String} target Select target. Can be a css selector or HTML Select element.
      * @since 1.0.0
-     * @returns {Select} Returns an instance of Select object.
+     * @return {Select} Returns an instance of Select object.
      */
     constructor(target) {
         super();
@@ -285,7 +285,7 @@ export default class Select extends Widget {
      * @method clickOutEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     clickOutEventCallback(e) {
         if (Helper.isChildOf(e.target, this.container) || (e.target === this.container)) {
@@ -306,7 +306,7 @@ export default class Select extends Widget {
      * @method itemClickEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     itemClickEventCallback(e) {
         let id = e.currentTarget.id.replace('item-', '');
@@ -321,7 +321,7 @@ export default class Select extends Widget {
      * @param {HTMLOptionElement|String} value Item value.
      * @param {String} label Item label.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     addItem(value, label) {
         let option = null;
@@ -374,7 +374,7 @@ export default class Select extends Widget {
      * @method removeItem
      * @param {WidgetPart} item Use getItemByValue or getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     removeItem(item) {
         let id = this.getItemId(item);
@@ -398,7 +398,7 @@ export default class Select extends Widget {
      * @method getItemId
      * @param {WidgetPart} item Use getItemByValue or getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {String|null} Returns item id or null if id not found.
+     * @return {String|null} Returns item id or null if id not found.
      */
     getItemId(item){
         try {
@@ -414,7 +414,7 @@ export default class Select extends Widget {
      * @method getItemById
      * @param {String} id Id of item.
      * @since 1.0.0
-     * @returns {WidgetPart|null} Returns WidgetPart of item.
+     * @return {WidgetPart|null} Returns WidgetPart of item.
      */
     getItemById(id) {
         try {
@@ -430,7 +430,7 @@ export default class Select extends Widget {
      * @method getItemByValue
      * @param {String} value Value of item.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns WidgetPart of item.
+     * @return {WidgetPart} Returns WidgetPart of item.
      */
     getItemByValue(value) {
         let item = null;
@@ -449,7 +449,7 @@ export default class Select extends Widget {
      * @method getItemByIndex
      * @param {Number} index Index of item.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns WidgetPart of item.
+     * @return {WidgetPart} Returns WidgetPart of item.
      */
     getItemByIndex(index) {
         let option = this.target.options[index];
@@ -467,7 +467,7 @@ export default class Select extends Widget {
      * @method selectItem
      * @param {WidgetPart} item Use getItemByValue or getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     selectItem(item) {
         let id = this.getItemId(item);
@@ -510,7 +510,7 @@ export default class Select extends Widget {
      * @method unSelectItem
      * @param {WidgetPart} item Use getItemByValue or getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     unSelectItem(item) {
         let id = this.getItemId(item);
@@ -547,7 +547,7 @@ export default class Select extends Widget {
      * @method toggleItem
      * @param {WidgetPart} item Use getItemByValue or getItemByIndex method to get an item.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     toggleItem(item) {
         let id = this.getItemId(item);
@@ -567,7 +567,7 @@ export default class Select extends Widget {
      *
      * @method open
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     open() {
         this.Search.this.value = '';
@@ -587,7 +587,7 @@ export default class Select extends Widget {
      *
      * @method close
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     close() {
         this.Search.this.value = this.getSelectedLabels().join(', ');
@@ -603,7 +603,7 @@ export default class Select extends Widget {
      *
      * @method isOpen
      * @since 1.0.0
-     * @returns {Boolean} Returns true if Select is open and false otherwise.
+     * @return {Boolean} Returns true if Select is open and false otherwise.
      */
     isOpen() {
         return this.container.classList.contains('skyflow-select-is-open');
@@ -615,7 +615,7 @@ export default class Select extends Widget {
      * @method clickOut
      * @param {Boolean} close If true, Select will be close.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     clickOut(close = true) {
         this.config.clickOut = close;
@@ -632,7 +632,7 @@ export default class Select extends Widget {
      * @method multiple
      * @param {Boolean} multiple If true, Select will have multiple selection.
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     multiple(multiple = true) {
         this.config.multiple = multiple;
@@ -649,7 +649,7 @@ export default class Select extends Widget {
      *
      * @method getSelected
      * @since 1.0.0
-     * @returns {String[]} Returns array containing the values.
+     * @return {String[]} Returns array containing the values.
      */
     getSelected(){
         let result = [];
@@ -670,7 +670,7 @@ export default class Select extends Widget {
      *
      * @method getSelectedLabels
      * @since 1.0.0
-     * @returns {String[]} Returns array containing the labels.
+     * @return {String[]} Returns array containing the labels.
      */
     getSelectedLabels(){
         let result = [];
@@ -692,7 +692,7 @@ export default class Select extends Widget {
      *
      * @method update
      * @since 1.0.0
-     * @returns {Select} Returns the current Select object.
+     * @return {Select} Returns the current Select object.
      */
     update(){
         this.multiple(this.target.hasAttribute('multiple'));
@@ -720,7 +720,7 @@ export default class Select extends Widget {
      * @method search
      * @param {String} value Value or label to search.
      * @since 1.0.0
-     * @returns {String[]} Returns keys of each element. Found values ​​are stored in the searchValues property
+     * @return {String[]} Returns keys of each element. Found values ​​are stored in the searchValues property
      */
     search(value){
         value = Helper.slugify(value);

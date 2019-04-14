@@ -24,7 +24,7 @@ export default class Tooltip extends Widget{
      * @param {HTMLElement|String} target Tooltip target. Must be an element from the DOM.
      * @param {HTMLElement|String} content Sets Tooltip content.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     constructor(target, content = 'Tooltip !') {
         super();
@@ -369,7 +369,7 @@ export default class Tooltip extends Widget{
      * @method triggerEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     triggerEventCallback(e) {
 
@@ -400,7 +400,7 @@ export default class Tooltip extends Widget{
      * @method clickOutEventCallback
      * @param {Event} e Current Event object
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     clickOutEventCallback(e) {
 
@@ -424,7 +424,7 @@ export default class Tooltip extends Widget{
      *
      * @method show
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     show() {
         this.container.style.display = 'block';
@@ -444,7 +444,7 @@ export default class Tooltip extends Widget{
      * @param {String} incrementX Horizontal position incrementation.
      * @param {String} incrementY Vertical position incrementation.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     position(incrementX = '+0', incrementY = '+0') {
 
@@ -487,7 +487,7 @@ export default class Tooltip extends Widget{
      *
      * @method hide
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     hide() {
         this.container.style.display = 'none';
@@ -505,7 +505,7 @@ export default class Tooltip extends Widget{
      * @method trigger
      * @param {String} trigger Type of trigger.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     trigger(trigger) {
         if (!Helper.hasProperty(this.triggersHandler, trigger)) {
@@ -526,7 +526,7 @@ export default class Tooltip extends Widget{
      * @method text
      * @param {String} text Content of Tooltip.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     text(text) {
         this.content.textContent = text;
@@ -540,7 +540,7 @@ export default class Tooltip extends Widget{
      * @method html
      * @param {String} html Content of Tooltip.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     html(html) {
         this.content.innerHTML = html;
@@ -554,7 +554,7 @@ export default class Tooltip extends Widget{
      * @method addChild
      * @param {HTMLElement} child Child to add.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     addChild(child) {
         this.content.appendChild(child);
@@ -568,7 +568,7 @@ export default class Tooltip extends Widget{
      * @method placement
      * @param {String} placement Tooltip placement.
      * @since 1.0.0
-     * @returns {Tooltip} Returns an instance of Tooltip object.
+     * @return {Tooltip} Returns an instance of Tooltip object.
      */
     placement(placement = 'bottom') {
         if (!Helper.hasProperty(this.placementsHandler, placement)) {
@@ -588,7 +588,7 @@ export default class Tooltip extends Widget{
      *
      * @method isShown
      * @since 1.0.0
-     * @returns {Boolean} Returns true if Tooltip is shown and false otherwise.
+     * @return {Boolean} Returns true if Tooltip is shown and false otherwise.
      */
     isShown() {
         return !(window.getComputedStyle(this.container, null).getPropertyValue("visibility") === 'hidden');
@@ -600,7 +600,7 @@ export default class Tooltip extends Widget{
      * @method clickOut
      * @param {Boolean} close Set if Tooltip will be close or not.
      * @since 1.0.0
-     * @returns {Tooltip} Returns the current Tooltip object.
+     * @return {Tooltip} Returns the current Tooltip object.
      */
     clickOut(close = true) {
 

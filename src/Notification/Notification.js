@@ -179,7 +179,7 @@ export default class Notification extends Widget{
      * @method autoHide
      * @param {Boolean} auto
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     autoHide(auto){
         this.config.autoHide = auto;
@@ -199,7 +199,7 @@ export default class Notification extends Widget{
      * @method showDuration
      * @param {Number} duration Duration in ms.
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     showDuration(duration){
         this.config.showDuration = duration;
@@ -214,7 +214,7 @@ export default class Notification extends Widget{
      * @param {HTMLElement|String} header Notification header content.
      * @param {HTMLElement|String} body Notification body content.
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     notify(type, header, body){
         setTimeout(()=>{
@@ -250,7 +250,7 @@ export default class Notification extends Widget{
      * @param {HTMLElement|String} body Notification body content.
      * @param {HTMLElement|String} header Notification header content.
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     success(body, header = 'Success'){
         return this.notify('success', header, body);
@@ -263,7 +263,7 @@ export default class Notification extends Widget{
      * @param {HTMLElement|String} body Notification body content.
      * @param {HTMLElement|String} header Notification header content.
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     warning(body, header = 'Warning'){
         return this.notify('warning', header, body);
@@ -276,7 +276,7 @@ export default class Notification extends Widget{
      * @param {HTMLElement|String} body Notification body content.
      * @param {HTMLElement|String} header Notification header content.
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     info(body, header = 'Info'){
         return this.notify('info', header, body);
@@ -289,7 +289,7 @@ export default class Notification extends Widget{
      * @param {HTMLElement|String} body Notification body content.
      * @param {HTMLElement|String} header Notification header content.
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     error(body, header = 'Error'){
         return this.notify('error', header, body);
@@ -300,7 +300,7 @@ export default class Notification extends Widget{
      *
      * @method hide
      * @since 1.0.0
-     * @returns {Notification} Returns the current Notification object.
+     * @return {Notification} Returns the current Notification object.
      */
     hide(){
         clearTimeout(this.setTimeoutId);

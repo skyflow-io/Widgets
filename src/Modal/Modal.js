@@ -207,7 +207,7 @@ export default class Modal extends Widget{
      *
      * @method triggerEventCallback
      * @since 1.0.0
-     * @returns {Modal} Returns the current Modal object.
+     * @return {Modal} Returns the current Modal object.
      */
     triggerEventCallback(e) {
         e.preventDefault();
@@ -219,7 +219,7 @@ export default class Modal extends Widget{
      *
      * @method show
      * @since 1.0.0
-     * @returns {Modal} Returns the current Modal object.
+     * @return {Modal} Returns the current Modal object.
      */
     show(){
         this.addClass('skyflow-modal-is-shown');
@@ -247,7 +247,7 @@ export default class Modal extends Widget{
      *
      * @method hide
      * @since 1.0.0
-     * @returns {Modal} Returns the current Modal object.
+     * @return {Modal} Returns the current Modal object.
      */
     hide(){
         this.removeClass('skyflow-modal-is-shown');
@@ -264,7 +264,7 @@ export default class Modal extends Widget{
      *
      * @method isShown
      * @since 1.0.0
-     * @returns {Boolean} Returns true if Modal is shown and false otherwise.
+     * @return {Boolean} Returns true if Modal is shown and false otherwise.
      */
     isShown() {
         return (window.getComputedStyle(this.container, null).getPropertyValue('visibility') !== 'hidden');
@@ -276,7 +276,7 @@ export default class Modal extends Widget{
      * @method trigger
      * @param {HTMLElement|String} element HTMLElement to use.
      * @since 1.0.0
-     * @returns {Modal} Returns the current Modal object.
+     * @return {Modal} Returns the current Modal object.
      */
     trigger(element){
         if(Helper.isString(element)){

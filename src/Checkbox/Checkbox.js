@@ -26,7 +26,7 @@ export default class Checkbox extends Widget{
      * @param {HTMLInputElement|String} target Checkbox target. Must be HTMLInputElement with checkbox type.
      * @param {String} label Checkbox label.
      * @since 1.0.0
-     * @returns {Checkbox} Returns an instance of Checkbox object.
+     * @return {Checkbox} Returns an instance of Checkbox object.
      */
     constructor(target, label) {
         super();
@@ -126,7 +126,7 @@ export default class Checkbox extends Widget{
      *
      * @method check
      * @since 1.0.0
-     * @returns {Checkbox} Returns the current Checkbox object.
+     * @return {Checkbox} Returns the current Checkbox object.
      */
     check(){
         this.target.checked = true;
@@ -138,7 +138,7 @@ export default class Checkbox extends Widget{
      *
      * @method uncheck
      * @since 1.0.0
-     * @returns {Checkbox} Returns the current Checkbox object.
+     * @return {Checkbox} Returns the current Checkbox object.
      */
     uncheck(){
         this.target.checked = false;
@@ -150,7 +150,7 @@ export default class Checkbox extends Widget{
      *
      * @method toggle
      * @since 1.0.0
-     * @returns {Checkbox} Returns the current Checkbox object.
+     * @return {Checkbox} Returns the current Checkbox object.
      */
     toggle(){
         this.target.checked = !this.target.checked;

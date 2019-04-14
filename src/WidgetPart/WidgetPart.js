@@ -29,7 +29,7 @@ export default class WidgetPart {
      *
      * @method show
      * @since 1.0.0
-     * @returns {WidgetPart} Returns the current WidgetPart object.
+     * @return {WidgetPart} Returns the current WidgetPart object.
      */
     show(){
         this.this.style.display = 'block';
@@ -41,7 +41,7 @@ export default class WidgetPart {
      *
      * @method isActive
      * @since 1.0.0
-     * @returns {Boolean} Returns true if WidgetPart is displayed and false otherwise.
+     * @return {Boolean} Returns true if WidgetPart is displayed and false otherwise.
      */
     isActive(){
         return (window.getComputedStyle(this.this, null).getPropertyValue('display') !== 'none');
@@ -52,7 +52,7 @@ export default class WidgetPart {
      *
      * @method hide
      * @since 1.0.0
-     * @returns {WidgetPart} Returns the current WidgetPart object.
+     * @return {WidgetPart} Returns the current WidgetPart object.
      */
     hide(){
         this.this.style.display = 'none';
@@ -65,7 +65,7 @@ export default class WidgetPart {
      * @method text
      * @param {String} text Content of WidgetPart.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns an instance of WidgetPart object.
+     * @return {WidgetPart} Returns an instance of WidgetPart object.
      */
     text(text){
         this.this.textContent = text;
@@ -78,7 +78,7 @@ export default class WidgetPart {
      * @method html
      * @param {String} html Content of WidgetPart.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns an instance of WidgetPart object.
+     * @return {WidgetPart} Returns an instance of WidgetPart object.
      */
     html(html){
         this.this.innerHTML = html;
@@ -91,7 +91,7 @@ export default class WidgetPart {
      * @method addChild
      * @param {HTMLElement} child Child to add.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns an instance of WidgetPart object.
+     * @return {WidgetPart} Returns an instance of WidgetPart object.
      */
     addChild(child){
         this.this.appendChild(child);
@@ -104,7 +104,7 @@ export default class WidgetPart {
      * @method addClass
      * @param {String} name Class name.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns an instance of WidgetPart object.
+     * @return {WidgetPart} Returns an instance of WidgetPart object.
      */
     addClass(name){
         this.this.classList.add(name);
@@ -117,7 +117,7 @@ export default class WidgetPart {
      * @method removeClass
      * @param {String} name Class name.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns an instance of WidgetPart object.
+     * @return {WidgetPart} Returns an instance of WidgetPart object.
      */
     removeClass(name){
         this.this.classList.remove(name);
@@ -129,7 +129,7 @@ export default class WidgetPart {
      *
      * @method remove
      * @since 1.0.0
-     * @returns {WidgetPart} Returns the current WidgetPart object.
+     * @return {WidgetPart} Returns the current WidgetPart object.
      */
     remove(){
         this.this.parentNode.removeChild(this.this);
@@ -143,7 +143,7 @@ export default class WidgetPart {
      * @param {String} event Event name.
      * @param {Function} callback Event callback.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns the current WidgetPart object.
+     * @return {WidgetPart} Returns the current WidgetPart object.
      */
     addEvent(event, callback){
         Helper.addEvent(this.this, event, callback);
@@ -157,7 +157,7 @@ export default class WidgetPart {
      * @param {String} event Event name.
      * @param {Function} callback Event callback.
      * @since 1.0.0
-     * @returns {WidgetPart} Returns the current WidgetPart object.
+     * @return {WidgetPart} Returns the current WidgetPart object.
      */
     removeEvent(event, callback){
         Helper.removeEvent(this.this, event, callback);

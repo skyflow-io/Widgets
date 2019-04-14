@@ -25,7 +25,7 @@ export default class Switch extends Widget{
      * @method constructor
      * @param {HTMLInputElement|String} target Switch target. Must be HTMLInputElement with switch type.
      * @since 1.0.0
-     * @returns {Switch} Returns an instance of Switch object.
+     * @return {Switch} Returns an instance of Switch object.
      */
     constructor(target) {
         super();
@@ -119,7 +119,7 @@ export default class Switch extends Widget{
      *
      * @method check
      * @since 1.0.0
-     * @returns {Switch} Returns the current Switch object.
+     * @return {Switch} Returns the current Switch object.
      */
     check(){
         this.target.checked = true;

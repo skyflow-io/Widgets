@@ -24,7 +24,7 @@ export default class Widget {
      * @param {String} event Event name. See config.events array property to know list of events.
      * @param {Function} callback Function to trigger.
      * @since 1.0.0
-     * @returns {Widget} Returns the current Widget object.
+     * @return {Widget} Returns the current Widget object.
      */
     on(event, callback) {
         if (Helper.hasProperty(this.config.events, event)) {
@@ -39,7 +39,7 @@ export default class Widget {
      * @method off
      * @param {String} event Event name. See config.events array property to know list of events.
      * @since 1.0.0
-     * @returns {Widget} Returns the current Widget object.
+     * @return {Widget} Returns the current Widget object.
      */
     off(event) {
         if (Helper.hasProperty(this.config.events, event)) {
@@ -54,7 +54,7 @@ export default class Widget {
      * @method addClass
      * @param {String} name Class name.
      * @since 1.0.0
-     * @returns {Widget} Returns the current Widget object.
+     * @return {Widget} Returns the current Widget object.
      */
     addClass(name){
         this.container.classList.add(name);
@@ -67,7 +67,7 @@ export default class Widget {
      * @method removeClass
      * @param {String} name Class name.
      * @since 1.0.0
-     * @returns {Widget} Returns the current Widget object.
+     * @return {Widget} Returns the current Widget object.
      */
     removeClass(name){
         this.container.classList.remove(name);
@@ -79,7 +79,7 @@ export default class Widget {
      *
      * @method remove
      * @since 1.0.0
-     * @returns {Widget} Returns the current Widget object.
+     * @return {Widget} Returns the current Widget object.
      */
     remove(){
         this.container.parentNode.removeChild(this.container);

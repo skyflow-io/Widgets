@@ -26,7 +26,7 @@ export default class Radio extends Widget{
      * @param {HTMLInputElement|String} target Radio target. Must be HTMLInputElement with radio type.
      * @param {String} label Radio label.
      * @since 1.0.0
-     * @returns {Radio} Returns an instance of Radio object.
+     * @return {Radio} Returns an instance of Radio object.
      */
     constructor(target, label) {
         super();
@@ -126,7 +126,7 @@ export default class Radio extends Widget{
      *
      * @method check
      * @since 1.0.0
-     * @returns {Radio} Returns the current Radio object.
+     * @return {Radio} Returns the current Radio object.
      */
     check(){
         this.target.checked = true;
