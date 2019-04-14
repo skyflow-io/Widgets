@@ -33,7 +33,7 @@ $doc = [];
 $docFinder = new Finder();
 $docFinder->files()->name('data.json')->in('/app/doc');
 foreach ($docFinder as $file) {
-    $doc = json_decode($file->getContents(), true)['classes'];
+    $doc = json_decode($file->getContents(), true);
 }
 
 $fileSystem->remove(['/app/data/widgets.json']);
