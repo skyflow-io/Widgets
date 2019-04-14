@@ -9,7 +9,7 @@ import Widget from '../Widget/Widget.js';
  * @constructor
  * @author Skyflow
  * @version 1.0.0
- * @requires Helper
+ * @scripts Helper
  * @extends Widget
  * @example
  *      let radio = new Radio('.my-input-element');

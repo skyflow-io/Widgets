@@ -7,7 +7,7 @@ import Helper from '../Helper.js';
  * @constructor
  * @author Skyflow
  * @version 1.0.0
- * @requires Helper
+ * @scripts Helper
  */
 export default class WidgetPart {
 

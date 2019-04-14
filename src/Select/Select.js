@@ -10,7 +10,7 @@ import WidgetPart from '../WidgetPart/WidgetPart.js';
  * @constructor
  * @author Skyflow
  * @version 1.0.0
- * @requires Helper
+ * @scripts Helper
  * @requires WidgetPart
  * @extends Widget
  * @example
