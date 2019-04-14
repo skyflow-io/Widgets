@@ -209,7 +209,8 @@ export default class Modal extends Widget{
      * @since 1.0.0
      * @returns {Modal} Returns the current Modal object.
      */
-    triggerEventCallback() {
+    triggerEventCallback(e) {
+        e.preventDefault();
         this.show();
     };
 

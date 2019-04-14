@@ -9,10 +9,10 @@ $fileSystem = new Filesystem();
 
 $result = [];
 
-$composeFinder = new Finder();
-$composeFinder->directories()->depth(0)->in('/app/src')->sortByName();
+$widgetFinder = new Finder();
+$widgetFinder->directories()->depth(0)->in('/app/src')->sortByName();
 
-foreach ($composeFinder as $compose) {
+foreach ($widgetFinder as $compose) {
     $name = $compose->getBasename();
     $files = [
         'name' => $name,
@@ -30,13 +30,15 @@ foreach ($composeFinder as $compose) {
     $result[] = $files;
 }
 
-$fileSystem->appendToFile('/app/widgets.json', json_encode($result));
+$fileSystem->remove(['/app/data/widgets.json']);
+$fileSystem->dumpFile('/app/data/widgets.json', json_encode($result));
 
 
-$filesFinder = new Finder();
-$filesFinder->files()->name('data.json')->in('/app/doc');
-foreach ($filesFinder as $file) {
+$docFinder = new Finder();
+$docFinder->files()->name('data.json')->in('/app/doc');
+foreach ($docFinder as $file) {
     $result = json_decode($file->getContents(), true)['classes'];
 }
 
-$fileSystem->appendToFile('/app/doc/widgets.json', json_encode($result));
+$fileSystem->remove(['/app/doc/widgets.json']);
+$fileSystem->dumpFile('/app/doc/widgets.json', json_encode($result));

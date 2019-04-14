@@ -189,6 +189,8 @@ $transition-time: 0.3s;
 
   &.skyflow-select-is-open {
     .skyflow-select-body {
+      margin: 0 0 10px 0;
+      border: none;
       display: block;
     }
   }
