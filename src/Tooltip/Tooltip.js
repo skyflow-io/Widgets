@@ -427,6 +427,12 @@ export default class Tooltip extends Widget{
      * @return {Tooltip} Returns an instance of Tooltip object.
      */
     show() {
+        if(!this.container){
+            return this;
+        }
+
+        document.body.appendChild(this.container);
+
         this.container.style.display = 'block';
         this.position(this.incrementX, this.incrementY);
         this.addClass('skyflow-tooltip-is-shown');
@@ -490,12 +496,21 @@ export default class Tooltip extends Widget{
      * @return {Tooltip} Returns an instance of Tooltip object.
      */
     hide() {
+
+        if(!this.container){
+            return this;
+        }
+
         this.container.style.display = 'none';
         this.container.style.visibility = 'hidden';
         this.removeClass('skyflow-tooltip-is-shown');
+        if(this.container.parentNode){
+            this.container.parentNode.removeChild(this.container);
+        }
         if (this.config.events.hide) {
             this.config.events.hide.apply(null, [this]);
         }
+
         return this;
     }
 
@@ -576,9 +591,6 @@ export default class Tooltip extends Widget{
         }
         this.config.placement = placement;
         this.container.dataset.skyflowPlacement = placement;
-        if (this.isShown()) {
-            this.show();
-        }
 
         return this;
     }
@@ -613,6 +625,23 @@ export default class Tooltip extends Widget{
             Helper.addEvent(document, 'mouseup', this.clickOutEventCallback);
         }
 
+        return this;
+    }
+
+    /**
+     * Removes Tooltip container from DOM.
+     *
+     * @method destroy
+     * @since 1.0.0
+     * @return {Tooltip} Returns the current Tooltip object.
+     */
+    destroy() {
+        Helper.removeEvent(this.target, 'mouseover', this.triggerEventCallback);
+        Helper.removeEvent(this.target, 'mouseout', this.triggerEventCallback);
+        Helper.removeEvent(this.target, 'click', this.triggerEventCallback);
+        if(this.container.parentNode){
+            this.container.parentNode.removeChild(this.container);
+        }
         return this;
     }
 

@@ -311,4 +311,18 @@ export default class Notification extends Widget{
         return this;
     }
 
+    /**
+     * Removes Tooltip container from DOM.
+     *
+     * @method destroy
+     * @since 1.0.0
+     * @return {Notification} Returns the current Notification object.
+     */
+    destroy() {
+        if(this.container.parentNode){
+            this.container.parentNode.removeChild(this.container);
+        }
+        return this;
+    }
+
 }

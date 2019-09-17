@@ -293,4 +293,21 @@ export default class Modal extends Widget{
         return this;
     }
 
+    /**
+     * Removes Modal container from DOM.
+     *
+     * @method destroy
+     * @since 1.0.0
+     * @returns {Modal} Returns the current Modal object.
+     */
+    destroy(){
+        if(this.config.trigger){
+            Helper.removeEvent(this.config.trigger, 'click', this.triggerEventCallback);
+        }
+        if(this.container.parentNode){
+            this.container.parentNode.removeChild(this.container);
+        }
+        return this;
+    }
+
 }
